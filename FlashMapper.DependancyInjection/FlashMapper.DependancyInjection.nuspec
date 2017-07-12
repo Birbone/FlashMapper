@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>FlashMapper.DependancyInjection</id>
+    <version>1.0.0-beta2</version>
+    <title>FlashMapper.DependancyInjection</title>
+    <authors>Ilya Tiunov</authors>
+    <owners>Ilya Tiunov</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>IoC pattern for FlashMapper.</description>
+    <releaseNotes>First test release.</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <tags>convert map data flashmapper ioc</tags>
+    <dependencies>
+      <dependency id="FlashMapper" version="1.0.0-beta2" />
+      <dependency id="FlashMapper.MultiSource" version="1.0.0-beta2" />
+    </dependencies>
+  </metadata>
+</package>

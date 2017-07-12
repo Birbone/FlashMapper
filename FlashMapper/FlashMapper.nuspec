@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>FlashMapper</id>
+    <version>1.0.0-beta2</version>
+    <authors>Ilya Tiunov</authors>
+    <owners>Ilya Tiunov</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Extension for converting objects.</description>
+    <releaseNotes>First test release</releaseNotes>
+    <tags>convert map data mapper flashmapper</tags>
+    <dependencies />
+  </metadata>
+</package>

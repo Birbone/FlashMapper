@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D8D736D0-2925-4631-BBD3-4D8FEEF71328}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FlashMapper.MultiSource</RootNamespace>
+    <AssemblyName>FlashMapper.MultiSource</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IInternalMultiSourceMappingExpressionConverter.cs" />
+    <Compile Include="InternalMultiSourceMappingExpressionConverter.cs" />
+    <Compile Include="FlashMapperGenericConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlashMapperGenericConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FlashMapperMultiSourceExtensions.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlashMapperMultiSourceExtensions.tt</DependentUpon>
+    </Compile>
+    <Compile Include="FlashMapperMultiSourceWrap.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FlashMapperMultiSourceWrap.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MultiSourceAutomaticPropertyValueExpressionResolver.cs" />
+    <Compile Include="MultiSourceMappingExpressionConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MultiSourceMappingExpressionConverter.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ParameterReplacementVisitor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IMultiSourceMappingExpressionConverter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>IMultiSourceMappingExpressionConverter.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FlashMapper.MultiSource.nuspec" />
+    <None Include="IMultiSourceMappingExpressionConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IMultiSourceMappingExpressionConverter.cs</LastGenOutput>
+    </None>
+    <None Include="FlashMapperGenericConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FlashMapperGenericConverter.cs</LastGenOutput>
+    </None>
+    <None Include="FlashMapperMultiSourceExtensions.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FlashMapperMultiSourceExtensions.cs</LastGenOutput>
+    </None>
+    <None Include="FlashMapperMultiSourceWrap.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FlashMapperMultiSourceWrap.cs</LastGenOutput>
+    </None>
+    <None Include="MultiSourceMappingExpressionConverter.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MultiSourceMappingExpressionConverter.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlashMapper\FlashMapper.csproj">
+      <Project>{fa66e867-d481-4313-9af0-aeb4e03d3ab2}</Project>
+      <Name>FlashMapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

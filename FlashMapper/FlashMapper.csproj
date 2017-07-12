@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FA66E867-D481-4313-9AF0-AEB4E03D3AB2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FlashMapper</RootNamespace>
+    <AssemblyName>FlashMapper</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IFlashMapperGenericConverter.cs" />
+    <Compile Include="Internal\Utils\IFlashMapperDependencyResolver.cs" />
+    <Compile Include="FlashMapperExtensions.cs" />
+    <Compile Include="FlashMapperGenericConverter.cs" />
+    <Compile Include="Services\IFlashMapperService.cs" />
+    <Compile Include="Internal\Implementations\GeneratingMappings\AutomaticPropertyValueExpressionResolver.cs" />
+    <Compile Include="Internal\Implementations\MatchingProperties\CamelCasePropertyNameTokenizer.cs" />
+    <Compile Include="Internal\Implementations\MatchingProperties\CamelCasePropertyNameTokenizerFactory.cs" />
+    <Compile Include="Internal\Utils\FlashMapperDependencyResolver.cs" />
+    <Compile Include="Services\GeneratingMappings\IAutomaticPropertyValueExpressionResolver.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\ConditionalAssignMapExpressionBuilder.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\ConditionalIgnorePropertyAssignMapExpressionBuilderFactory.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\EmptyMapExpressionBuilder.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\ExplicitIgnoreNodeChecker.cs" />
+    <Compile Include="Services\ParsingUserInput\IConditionalIgnorePropertyAssignMapExpressionBuilderFactory.cs" />
+    <Compile Include="Services\ParsingUserInput\ICustomIgnoreNodeChecker.cs" />
+    <Compile Include="Services\ParsingUserInput\ICustomMapExpressionPostProcessor.cs" />
+    <Compile Include="Services\MatchingProperties\ICustomPropertyNameComparer.cs" />
+    <Compile Include="Services\MatchingProperties\ICustomPropertyNameTokenizerFactory.cs" />
+    <Compile Include="Services\GeneratingMappings\ICustomPropertyValueExpressionResolver.cs" />
+    <Compile Include="Services\ParsingUserInput\ICustomPropertyAssignMapExpressionBuilderFactory.cs" />
+    <Compile Include="Services\ParsingUserInput\ICustomUserInputParser.cs" />
+    <Compile Include="Services\MatchingProperties\IIgnoreCasePropertyNameComparer.cs" />
+    <Compile Include="Services\ParsingUserInput\IExplicitIgnoreNodeChecker.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\IgnoreNodeChecker.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\IgnorePropertyAssignMapExpressionBuilderFactory.cs" />
+    <Compile Include="Services\ParsingUserInput\IIgnoreMapExpressionPostProcessor.cs" />
+    <Compile Include="Services\ParsingUserInput\IIgnoreNodeChecker.cs" />
+    <Compile Include="Services\ParsingUserInput\IIgnorePropertyAssignMapExpressionBuilderFactory.cs" />
+    <Compile Include="Services\ParsingUserInput\IImplicitIgnoreNodeChecker.cs" />
+    <Compile Include="Services\ParsingUserInput\IMapExpressionBuilder.cs" />
+    <Compile Include="Services\ParsingUserInput\IMemberInitUserInputParser.cs" />
+    <Compile Include="IFlashMapperCustomServiceBuilder.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\ImplicitIgnoreNodeChecker.cs" />
+    <Compile Include="Services\ParsingUserInput\INewUserInputParser.cs" />
+    <Compile Include="Services\GeneratingMappings\IUserInputPropertyValueExpressionResolver.cs" />
+    <Compile Include="FlashMapperCustomServiceBuilder.cs" />
+    <Compile Include="Internal\Utils\IFlashMapperCustomServiceBuilderFactory.cs" />
+    <Compile Include="Internal\Utils\FlashMapperCustomServiceBuilderFactory.cs" />
+    <Compile Include="SelectSourceCollisionBehavior.cs" />
+    <Compile Include="Internal\Implementations\Settings\DefaultFlashMapperSettingsProvider.cs" />
+    <Compile Include="Internal\Extensions.cs" />
+    <Compile Include="Services\MatchingProperties\ICamelCasePropertyNameTokenizerFactory.cs" />
+    <Compile Include="Services\ParsingUserInput\IPropertyAssignPostProcessor.cs" />
+    <Compile Include="Services\ParsingUserInput\ISpecificIgnoreNodeChecker.cs" />
+    <Compile Include="Services\ParsingUserInput\ISpecificPropertyAssignMapExpressionBuilderFactory.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\PropertyAssignPostProcessor.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\PropertyAssignPostProcessorVisitor.cs" />
+    <Compile Include="Services\Settings\IDefaultFlashMapperSettingsProvider.cs" />
+    <Compile Include="Internal\Implementations\MatchingProperties\IgnoreCasePropertyNameComparer.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\IgnoreMapExpressionPostProcessor.cs" />
+    <Compile Include="Models\IgnoreObject.cs" />
+    <Compile Include="Services\ParsingUserInput\IMapExpressionPostProcessor.cs" />
+    <Compile Include="Models\IMapNamingConventionSettings.cs" />
+    <Compile Include="IMappingConfiguration.cs" />
+    <Compile Include="Services\GeneratingMappings\IMappingGenerator.cs" />
+    <Compile Include="Services\IMappingsStorage.cs" />
+    <Compile Include="Services\IMappingsStorageFactory.cs" />
+    <Compile Include="Models\IFlashMapperSettings.cs" />
+    <Compile Include="IFlashMapperSettingsBuilder.cs" />
+    <Compile Include="Services\Settings\IFlashMapperSettingsBuilderFactory.cs" />
+    <Compile Include="Internal\Utils\IFlashMapperSettingsExtender.cs" />
+    <Compile Include="Models\INamingConvention.cs" />
+    <Compile Include="Services\MatchingProperties\INamingUnspecifiedPropertyNameComparer.cs" />
+    <Compile Include="Services\MatchingProperties\IPropertyNameAbbrevationHandler.cs" />
+    <Compile Include="Services\MatchingProperties\IPropertyNameComparer.cs" />
+    <Compile Include="Services\MatchingProperties\IPropertyNameTokenizer.cs" />
+    <Compile Include="Services\MatchingProperties\IPropertyNameTokenizerFactory.cs" />
+    <Compile Include="Services\MatchingProperties\IPropertyNameTokenizerResolver.cs" />
+    <Compile Include="Services\MatchingProperties\IPropertyPrefixLocator.cs" />
+    <Compile Include="Services\ParsingUserInput\ISpecificMapExpressionPostProcessor.cs" />
+    <Compile Include="Services\MatchingProperties\ISpecificPropertyNameComparer.cs" />
+    <Compile Include="Services\MatchingProperties\ITokenizedPropertyNameComparer.cs" />
+    <Compile Include="Services\MatchingProperties\IUnderscoreSeparatedPropertyNameTokenizerFactory.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\MapExpressionPostProcessor.cs" />
+    <Compile Include="Models\MapNamingConventionSettings.cs" />
+    <Compile Include="Models\Mapping.cs" />
+    <Compile Include="Models\MappingCombination.cs" />
+    <Compile Include="Internal\Implementations\GeneratingMappings\MappingExpressionAutocompleteService.cs" />
+    <Compile Include="Services\GeneratingMappings\IMappingExpressionAutocompleteService.cs" />
+    <Compile Include="Services\GeneratingMappings\IPropertyValueExpressionResolver.cs" />
+    <Compile Include="Services\MatchingProperties\ISpecificPropertyValueExpressionResolver.cs" />
+    <Compile Include="Services\ParsingUserInput\ISpecificUserInputParser.cs" />
+    <Compile Include="Services\ParsingUserInput\IUserInputParser.cs" />
+    <Compile Include="MappingConfiguration.cs" />
+    <Compile Include="Internal\Implementations\GeneratingMappings\MappingGenerator.cs" />
+    <Compile Include="MappingOptions.cs" />
+    <Compile Include="Internal\MappingsStorage.cs" />
+    <Compile Include="Internal\MappingsStorageFactory.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\MemberInitUserInputParser.cs" />
+    <Compile Include="FlashMapperBadInputException.cs" />
+    <Compile Include="FlashMapperException.cs" />
+    <Compile Include="Models\FlashMapperSettings.cs" />
+    <Compile Include="FlashMapperSettingsBuilder.cs" />
+    <Compile Include="Internal\Implementations\Settings\FlashMapperSettingsBuilderFactory.cs" />
+    <Compile Include="Internal\Utils\FlashMapperSettingsExtender.cs" />
+    <Compile Include="Internal\ModuleConfiguration.cs" />
+    <Compile Include="Models\NamingConvention.cs" />
+    <Compile Include="NamingConventionType.cs" />
+    <Compile Include="Internal\Implementations\MatchingProperties\NamingUnspecifiedPropertyNameComparer.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\NewUserInputParser.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\ProcessIgnoreVisitor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyIsNotMappedException.cs" />
+    <Compile Include="Internal\Implementations\MatchingProperties\PropertyNameAbbrevationHandler.cs" />
+    <Compile Include="Internal\Implementations\MatchingProperties\PropertyNameComparer.cs" />
+    <Compile Include="Models\PropertyNameCompareRank.cs" />
+    <Compile Include="Internal\Implementations\MatchingProperties\PropertyNameTokenizerFactory.cs" />
+    <Compile Include="Internal\Implementations\MatchingProperties\PropertyNameTokenizerResolver.cs" />
+    <Compile Include="Internal\Implementations\MatchingProperties\PropertyPrefixLocator.cs" />
+    <Compile Include="UnresolvedPropertyBehavior.cs" />
+    <Compile Include="Internal\Implementations\GeneratingMappings\PropertyValueExpressionResolver.cs" />
+    <Compile Include="SimplePropertyNameComparer.cs" />
+    <Compile Include="Internal\Implementations\MatchingProperties\TokenizedPropertyNameComparer.cs" />
+    <Compile Include="Internal\Implementations\MatchingProperties\UnderscoreSeparatedPropertyNameTokenizer.cs" />
+    <Compile Include="Internal\Implementations\MatchingProperties\UnderscoreSeparatedPropertyNameTokenizerFactory.cs" />
+    <Compile Include="Models\UserInputExpressionParts.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\UserInputParser.cs" />
+    <Compile Include="Internal\Implementations\GeneratingMappings\UserInputPropertyValueExpressionResolver.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="FlashMapper.nuspec" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
