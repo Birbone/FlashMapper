@@ -86,6 +86,11 @@ namespace FlashMapper
         }
 
         public Guid InstanceId { get; }
+
+        public void Dispose()
+        {
+            mappingsStorage?.Dispose();
+        }
     }
 
 }

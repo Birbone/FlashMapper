@@ -8,9 +8,12 @@ namespace FlashMapper.Internal
     public class MappingsStorage : IMappingsStorage
     {
         private readonly MappingConfiguration mappingConfiguration;
+        private readonly Queue<IMappingStorageCleaner> storagesToCleanUp;
+
         public MappingsStorage(MappingConfiguration mappingConfiguration)
         {
             this.mappingConfiguration = mappingConfiguration;
+            storagesToCleanUp = new Queue<IMappingStorageCleaner>();
         }
 
         public Mapping<TSource, TDestination> GetMapping<TSource, TDestination>()
@@ -20,11 +23,21 @@ namespace FlashMapper.Internal
 
         public void SetMapping<TSource, TDestination>(Mapping<TSource, TDestination> mapping)
         {
-            MappingsStorage<TSource, TDestination>.SetMapping(mappingConfiguration, mapping);
+            var storage = MappingsStorage<TSource, TDestination>.SetMapping(mappingConfiguration, mapping);
+            storagesToCleanUp.Enqueue(storage);
+            
+        }
+
+        public void Dispose()
+        {
+            while (storagesToCleanUp.Count > 0)
+            {
+                storagesToCleanUp.Dequeue().CleanUp();
+            }
         }
     }
 
-    public static class MappingsStorage<TSource, TDestination>
+    internal static class MappingsStorage<TSource, TDestination>
     {
         private static readonly IDictionary<Guid, Mapping<TSource, TDestination>> Mappings = new Dictionary<Guid, Mapping<TSource, TDestination>>();
 
@@ -39,12 +52,42 @@ namespace FlashMapper.Internal
             }
         }
 
-        public static void SetMapping(MappingConfiguration mappingConfiguration, Mapping<TSource, TDestination> mapping)
+        public static IMappingStorageCleaner SetMapping(MappingConfiguration mappingConfiguration, Mapping<TSource, TDestination> mapping)
         {
             lock (Mappings)
             {
                 Mappings[mappingConfiguration.InstanceId] = mapping;
             }
+            return new MappingStorageCleaner<TSource, TDestination>(mappingConfiguration);
+        }
+
+        public static void RemoveConfiguration(MappingConfiguration mappingConfiguration)
+        {
+            lock (Mappings)
+            {
+                if (Mappings.ContainsKey(mappingConfiguration.InstanceId))
+                    Mappings.Remove(mappingConfiguration.InstanceId);
+            }
+        }
+    }
+
+    internal interface IMappingStorageCleaner
+    {
+        void CleanUp();
+    }
+
+    internal class MappingStorageCleaner<TSource, TDestination> : IMappingStorageCleaner
+    {
+        private readonly MappingConfiguration mappingConfiguration;
+
+        public MappingStorageCleaner(MappingConfiguration mappingConfiguration)
+        {
+            this.mappingConfiguration = mappingConfiguration;
+        }
+
+        public void CleanUp()
+        {
+            MappingsStorage<TSource, TDestination>.RemoveConfiguration(mappingConfiguration);
         }
     }
 }

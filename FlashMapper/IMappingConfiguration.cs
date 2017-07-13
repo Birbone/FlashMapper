@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 
 namespace FlashMapper
 {
-    public interface IMappingConfiguration
+    public interface IMappingConfiguration: IDisposable
     {
         void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression);
         void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, 
