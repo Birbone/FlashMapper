@@ -51,11 +51,18 @@
   </Choose>
   <ItemGroup>
     <Compile Include="Data\CompanyDataCollection.cs" />
+    <Compile Include="Data\OrderPositionsCollection.cs" />
+    <Compile Include="Data\OrdersCollection.cs" />
+    <Compile Include="Data\StoreItemsCollection.cs" />
     <Compile Include="Data\UsersCollection.cs" />
     <Compile Include="DependancyInjectionTests.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="IgnoreTests.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderPosition.cs" />
     <Compile Include="Models\PersonViewModel.cs" />
+    <Compile Include="Models\SinglePositionOrder.cs" />
+    <Compile Include="Models\StoreItem.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserInfo.cs" />
     <Compile Include="Models\CompanyData.cs" />

@@ -30,7 +30,7 @@ namespace FlashMapper
 		var sourceMethodParametersString = string.Join(", ", Enumerable.Range(1, i + 1)
 			.Select(n => $"T{sourceTypePrefix}{n} {sourceVariablePrefix}{n}"));
 #>
-    public abstract class FlashMapperBuilder<<#= sourcesTypesString #>, TDestination, TFlashMapperBuilder> : IBuilder<<#= sourcesTypesString #>, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<<#= sourcesTypesString #>, TDestination, TFlashMapperBuilder> : IBuilder<<#= sourcesTypesString #>, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<<#= sourcesTypesString #>, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;

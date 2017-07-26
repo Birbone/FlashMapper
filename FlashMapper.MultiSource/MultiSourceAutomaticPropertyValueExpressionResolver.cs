@@ -58,6 +58,7 @@ namespace FlashMapper.MultiSource
             var matchingProperties = rankedProperties.Where(pr => pr.Rank != PropertyNameCompareRank.DoNotMatch)
                 .Where(pr => property.PropertyType.IsAssignableFrom(pr.Property.PropertyType))
                 .OrderByDescending(pr => pr.Rank)
+                .ThenBy(pr => pr.SourceIndex)
                 .ToArray();
             if (matchingProperties.Length == 0)
                 return false;

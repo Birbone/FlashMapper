@@ -51,6 +51,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>IFlashMapperBuilderConfigurator.tt</DependentUpon>
     </Compile>
+    <Compile Include="IMappingExpressionStorage.cs" />
     <Compile Include="MappingExpressionStorage.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -69,7 +70,7 @@
     <Compile Include="FlashMapperBuildersRegistrationService.cs" />
     <Compile Include="DeferredFlashMapperSettingsBuilder.cs" />
     <Compile Include="IFlashMapperBuildersRegistrationService.cs" />
-    <Compile Include="IFlashMapperConfigurationService.cs" />
+    <Compile Include="IFlashMapperBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ToStaticMethodVisitor.cs" />
   </ItemGroup>

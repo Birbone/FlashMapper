@@ -10,7 +10,7 @@ using FlashMapper.DependancyInjection;
 
 namespace FlashMapper
 {
-    public abstract class FlashMapperBuilder<TSource1, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;
@@ -49,7 +49,7 @@ namespace FlashMapper
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TDestination> configurator);
     }
 
-    public abstract class FlashMapperBuilder<TSource1, TSource2, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TSource2, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TSource2, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;
@@ -88,7 +88,7 @@ namespace FlashMapper
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TDestination> configurator);
     }
 
-    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TSource2, TSource3, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;
@@ -127,7 +127,7 @@ namespace FlashMapper
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TDestination> configurator);
     }
 
-    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;
@@ -166,7 +166,7 @@ namespace FlashMapper
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TDestination> configurator);
     }
 
-    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;
@@ -205,7 +205,7 @@ namespace FlashMapper
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination> configurator);
     }
 
-    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;
@@ -244,7 +244,7 @@ namespace FlashMapper
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination> configurator);
     }
 
-    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;
@@ -283,7 +283,7 @@ namespace FlashMapper
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination> configurator);
     }
 
-    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;
@@ -322,7 +322,7 @@ namespace FlashMapper
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination> configurator);
     }
 
-    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;
@@ -361,7 +361,7 @@ namespace FlashMapper
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination> configurator);
     }
 
-    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;
@@ -400,7 +400,7 @@ namespace FlashMapper
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination> configurator);
     }
 
-    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;
@@ -439,7 +439,7 @@ namespace FlashMapper
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination> configurator);
     }
 
-    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;
@@ -478,7 +478,7 @@ namespace FlashMapper
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination> configurator);
     }
 
-    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;
@@ -517,7 +517,7 @@ namespace FlashMapper
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination> configurator);
     }
 
-    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>, IFlashMapperConfigurationService
+    public abstract class FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination, TFlashMapperBuilder> : IBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>, IFlashMapperBuilder
         where TFlashMapperBuilder: FlashMapperBuilder<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination, TFlashMapperBuilder>
     {
         private readonly IMappingConfiguration mappingConfiguration;

@@ -84,6 +84,26 @@ namespace FlashMapper.Tests
             CheckUserInfo(johnUser, johnSmith, resultUserInfo, true);
         }
 
+        [TestMethod]
+        public void CollisionsTest()
+        {
+            var mapperConfiguration = new MappingConfiguration();
+            mapperConfiguration.CreateMapping<Order, OrderPosition, StoreItem, SinglePositionOrder>(
+                (o, p, i) => new SinglePositionOrder(), c => c.CollisionBehavior(SelectSourceCollisionBehavior.ChooseAny));
+
+            var order = TestData.Orders.BrentOrdersPencil;
+            var orderPosition = TestData.OrderPositions.BrentOrdersSinglePencil;
+            var storeItem = TestData.StoreItems.Pencil;
+            var resultOrder = mapperConfiguration.Convert(order, orderPosition, storeItem)
+                .To<SinglePositionOrder>();
+            Assert.AreEqual(order.Id, resultOrder.Id);
+            Assert.AreEqual(order.Address, resultOrder.Address);
+            Assert.AreEqual(orderPosition.Amount, resultOrder.Amount);
+            Assert.AreEqual(storeItem.Name, resultOrder.Name);
+            Assert.AreEqual(order.OrderNumber, resultOrder.OrderNumber);
+            Assert.AreEqual(order.Recipient, resultOrder.Recipient);
+        }
+
         private void CheckUserWierdModel(User user, Person person, UserWeirdModel userWeirdModel)
         {
             Assert.AreEqual(person.Address, userWeirdModel.home_address);

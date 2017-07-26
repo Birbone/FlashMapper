@@ -1,6 +1,6 @@
 namespace FlashMapper.DependancyInjection
 {
-    public interface IFlashMapperConfigurationService
+    public interface IFlashMapperBuilder
     {
         void RegisterMapping();
     }

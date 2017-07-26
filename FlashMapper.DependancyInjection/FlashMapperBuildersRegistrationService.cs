@@ -4,9 +4,9 @@ namespace FlashMapper.DependancyInjection
 {
     public class FlashMapperBuildersRegistrationService : IFlashMapperBuildersRegistrationService
     {
-        private readonly IEnumerable<IFlashMapperConfigurationService> modelMapperConfigurationServices;
+        private readonly IEnumerable<IFlashMapperBuilder> modelMapperConfigurationServices;
 
-        public FlashMapperBuildersRegistrationService(IEnumerable<IFlashMapperConfigurationService> modelMapperConfigurationServices)
+        public FlashMapperBuildersRegistrationService(IEnumerable<IFlashMapperBuilder> modelMapperConfigurationServices)
         {
             this.modelMapperConfigurationServices = modelMapperConfigurationServices;
         }
