@@ -1,4 +1,4 @@
-namespace FlashMapper.DependancyInjection
+namespace FlashMapper
 {
     public interface IFlashMapperBuilder
     {

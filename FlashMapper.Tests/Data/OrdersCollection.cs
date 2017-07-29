@@ -15,5 +15,6 @@ namespace FlashMapper.Tests.Data
         };
 
         public Order BrentOrdersPencil => BrentOrdersPencilData;
+        public Order[] All => new[] {BrentOrdersPencilData};
     }
 }

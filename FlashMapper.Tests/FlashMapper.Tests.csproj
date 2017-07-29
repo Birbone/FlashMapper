@@ -81,6 +81,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyNameResolvingTests.cs" />
     <Compile Include="Data\TestData.cs" />
+    <Compile Include="SinglePositionOrderBuilder.cs" />
     <Compile Include="TestHelpers.cs" />
   </ItemGroup>
   <ItemGroup>

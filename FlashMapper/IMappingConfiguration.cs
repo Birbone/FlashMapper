@@ -13,5 +13,6 @@ namespace FlashMapper
             Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder> customServicesRegistration);
         void MapData<TSource, TDestination>(TSource source, TDestination destination);
         TDestination Convert<TSource, TDestination>(TSource source);
+        IMappingConfiguration CreateDependantConfiguration();
     }
 }

@@ -14,5 +14,6 @@ namespace FlashMapper.Tests.Data
         };
 
         public OrderPosition BrentOrdersSinglePencil => BrentOrdersSinglePencilData;
+        public OrderPosition[] All => new[] {BrentOrdersSinglePencilData};
     }
 }

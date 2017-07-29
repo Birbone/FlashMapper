@@ -56,5 +56,13 @@ namespace FlashMapper.DependancyInjection
         {
             return In(str, stringComparisonOptions, (IEnumerable<string>) stringCollection);
         }
+
+        public static Stack<TModel> Clone<TModel>(this Stack<TModel> original)
+        {
+            var resultArray = new TModel[original.Count];
+            original.CopyTo(resultArray, 0);
+            Array.Reverse(resultArray);
+            return new Stack<TModel>(resultArray);
+        }
     }
 }

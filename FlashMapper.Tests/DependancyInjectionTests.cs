@@ -16,5 +16,23 @@ namespace FlashMapper.Tests
             var reportModel = builder.Build(TestData.People.JohnSmith);
             Assert.AreEqual(28, reportModel.Age);
         }
+
+        //[TestMethod]
+        //public void ExtraPositionTest()
+        //{
+        //    var configuration = new MappingConfiguration();
+        //    var builder = new SinglePositionOrderBuilder(configuration);
+        //    builder.RegisterMapping();
+        //    var orderPosition = TestData.OrderPositions.BrentOrdersSinglePencil;
+        //    var order = TestData.Orders.BrentOrdersPencil;
+        //    var storeItem = TestData.StoreItems.Pencil;
+        //    var resultOrder = builder.Build(orderPosition);
+        //    Assert.AreEqual(order.Id, resultOrder.Id);
+        //    Assert.AreEqual(order.Address, resultOrder.Address);
+        //    Assert.AreEqual(orderPosition.Amount, resultOrder.Amount);
+        //    Assert.AreEqual(storeItem.Name, resultOrder.Name);
+        //    Assert.AreEqual(order.OrderNumber, resultOrder.OrderNumber);
+        //    Assert.AreEqual(order.Recipient, resultOrder.Recipient);
+        //}
     }
 }

@@ -13,17 +13,19 @@ namespace FlashMapper
 {
     public class MappingConfiguration : IMappingConfiguration
     {
+        private readonly IEnumerable<IFlashMapperService> customServices;
         private readonly IFlashMapperDependencyResolver dependencyResolver;
         private readonly IMappingsStorage mappingsStorage;
         private readonly IFlashMapperSettings defaultFlashMapperSettings;
+        private readonly List<IMappingConfiguration> dependantConfigurations;
 
         public MappingConfiguration(): this(Enumerable.Empty<IFlashMapperService>())
         {
-            
         }
 
         public MappingConfiguration(IEnumerable<IFlashMapperService> customServices)
         {
+            this.customServices = customServices;
             InstanceId = Guid.NewGuid();
             var customServicesArray = customServices.ToArray();
 
@@ -33,6 +35,7 @@ namespace FlashMapper
 
             mappingsStorage = dependencyResolver.GetService<IMappingsStorageFactory>().Create(this);
             defaultFlashMapperSettings = dependencyResolver.GetService<IDefaultFlashMapperSettingsProvider>().GetDefaultSettings();
+            dependantConfigurations = new List<IMappingConfiguration>();
         }
 
 
@@ -69,7 +72,8 @@ namespace FlashMapper
         
         private void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, IFlashMapperSettings settings, IFlashMapperDependencyResolver resolver)
         {
-            var mapping = resolver.GetService<IMappingGenerator>().GenerateCompleteMapping(mappingExpression, settings);
+            var mappingGenerator = resolver.GetService<IMappingGenerator>();
+            var mapping = mappingGenerator.GenerateCompleteMapping(mappingExpression, settings);
             mappingsStorage.SetMapping(mapping);
         }
 
@@ -84,12 +88,21 @@ namespace FlashMapper
             var mapping = mappingsStorage.GetMapping<TSource, TDestination>();
             return mapping.BuildFunction(source);
         }
+        
+        public IMappingConfiguration CreateDependantConfiguration()
+        {
+            var configuration = new MappingConfiguration(customServices);
+            dependantConfigurations.Add(configuration);
+            return configuration;
+        }
 
         public Guid InstanceId { get; }
 
         public void Dispose()
         {
             mappingsStorage?.Dispose();
+            foreach (var dependantConfiguration in dependantConfigurations)
+                dependantConfiguration?.Dispose();
         }
     }
 

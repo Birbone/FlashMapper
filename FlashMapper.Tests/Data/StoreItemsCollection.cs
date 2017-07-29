@@ -14,5 +14,6 @@ namespace FlashMapper.Tests.Data
         };
 
         public StoreItem Pencil => PencilData;
+        public StoreItem[] All => new[] {PencilData};
     }
 }
