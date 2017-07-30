@@ -72,7 +72,6 @@
     <Compile Include="Services\ParsingUserInput\IExplicitIgnoreNodeChecker.cs" />
     <Compile Include="Internal\Implementations\ParsingUserInput\IgnoreNodeChecker.cs" />
     <Compile Include="Internal\Implementations\ParsingUserInput\IgnorePropertyAssignMapExpressionBuilderFactory.cs" />
-    <Compile Include="Services\ParsingUserInput\IIgnoreMapExpressionPostProcessor.cs" />
     <Compile Include="Services\ParsingUserInput\IIgnoreNodeChecker.cs" />
     <Compile Include="Services\ParsingUserInput\IIgnorePropertyAssignMapExpressionBuilderFactory.cs" />
     <Compile Include="Services\ParsingUserInput\IImplicitIgnoreNodeChecker.cs" />
@@ -96,7 +95,6 @@
     <Compile Include="Internal\Implementations\ParsingUserInput\PropertyAssignPostProcessorVisitor.cs" />
     <Compile Include="Services\Settings\IDefaultFlashMapperSettingsProvider.cs" />
     <Compile Include="Internal\Implementations\MatchingProperties\IgnoreCasePropertyNameComparer.cs" />
-    <Compile Include="Internal\Implementations\ParsingUserInput\IgnoreMapExpressionPostProcessor.cs" />
     <Compile Include="Models\IgnoreObject.cs" />
     <Compile Include="Services\ParsingUserInput\IMapExpressionPostProcessor.cs" />
     <Compile Include="Models\IMapNamingConventionSettings.cs" />
@@ -147,7 +145,6 @@
     <Compile Include="NamingConventionType.cs" />
     <Compile Include="Internal\Implementations\MatchingProperties\NamingUnspecifiedPropertyNameComparer.cs" />
     <Compile Include="Internal\Implementations\ParsingUserInput\NewUserInputParser.cs" />
-    <Compile Include="Internal\Implementations\ParsingUserInput\ProcessIgnoreVisitor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyIsNotMappedException.cs" />
     <Compile Include="Internal\Implementations\MatchingProperties\PropertyNameAbbrevationHandler.cs" />

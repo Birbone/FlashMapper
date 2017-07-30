@@ -32,6 +32,12 @@ namespace FlashMapper.DependancyInjection
                 yield return model;
             yield return anotherModel;
         }
+        public static IEnumerable<TModel> WithBefore<TModel>(this IEnumerable<TModel> models, TModel anotherModel)
+        {
+            yield return anotherModel;
+            foreach (var model in models)
+                yield return model;
+        }
 
         public static bool In<TModel>(this TModel model, IEnumerable<TModel> collection)
         {

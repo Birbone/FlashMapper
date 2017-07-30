@@ -33,5 +33,6 @@ namespace FlashMapper.Tests.Data
 
         public Person JohnSmith => JohnSmithData;
         public Person BrentJohnson => BrentJohnsonData;
+        public Person[] All => new[] {JohnSmith, BrentJohnson};
     }
 }

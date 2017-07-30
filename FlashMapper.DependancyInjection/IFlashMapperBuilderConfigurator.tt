@@ -26,6 +26,15 @@ namespace FlashMapper.DependancyInjection
 #>
     public interface IFlashMapperBuilderConfigurator<<#= sourcesTypesString #>, TDestination>
     {
+<#  if (i < maxNumberOfSources - 1)
+	{
+		var newParameterSourceTypeName = $"T{sourceTypePrefix}{i+2}";
+		var sourcesTypesWithNewParameterString = $"{sourcesTypesString}, {newParameterSourceTypeName}";
+#>
+		IFlashMapperBuilderConfigurator<<#= sourcesTypesWithNewParameterString #>, TDestination> ResolveExtraParameter<<#= newParameterSourceTypeName #>>(Expression<Func<<#= sourcesTypesWithNewParameterString #>>> resolveParameterMethod);
+<#
+	}
+#>
         IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<<#= sourcesTypesString #>, TDestination>> mappingExpression);
     }
 

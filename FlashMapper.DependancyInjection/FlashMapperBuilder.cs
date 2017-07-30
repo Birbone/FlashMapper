@@ -33,17 +33,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TDestination> configurator);
@@ -72,17 +65,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TSource2, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TSource2, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TDestination> configurator);
@@ -111,17 +97,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TSource2, TSource3, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TSource2, TSource3, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TDestination> configurator);
@@ -150,17 +129,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TSource2, TSource3, TSource4, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TSource2, TSource3, TSource4, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TDestination> configurator);
@@ -189,17 +161,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination> configurator);
@@ -228,17 +193,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination> configurator);
@@ -267,17 +225,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination> configurator);
@@ -306,17 +257,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination> configurator);
@@ -345,17 +289,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination> configurator);
@@ -384,17 +321,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination> configurator);
@@ -423,17 +353,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination> configurator);
@@ -462,17 +385,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination> configurator);
@@ -501,17 +417,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination> configurator);
@@ -540,17 +449,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination> configurator);

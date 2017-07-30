@@ -53,17 +53,10 @@ namespace FlashMapper
         public void RegisterMapping()
         {
             var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var expressionStorage = new MappingExpressionStorage<<#= sourcesTypesString #>, TDestination>();
-            var configurator = new FlashMapperBuilderConfigurator<<#= sourcesTypesString #>, TDestination>(settingsBuilder, expressionStorage);
+            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
+            var configurator = new FlashMapperBuilderConfigurator<<#= sourcesTypesString #>, TDestination, TFlashMapperBuilder>(context);
             ConfigureMapping(configurator);
-            if (expressionStorage.MappingExpression == null)
-                return;
-            var builderParameter = Expression.Parameter(typeof(TFlashMapperBuilder));
-            var toStaticMethodVisitor = new ToStaticMethodVisitor(this, builderParameter);
-            var staticMethodBody = toStaticMethodVisitor.Visit(expressionStorage.MappingExpression.Body);
-            var staticMethod = Expression.Lambda<Func<<#= sourcesTypesString #>, TFlashMapperBuilder, TDestination>>(staticMethodBody,
-                expressionStorage.MappingExpression.Parameters.With(builderParameter));
-            mappingConfiguration.CreateMapping(staticMethod, s => settingsBuilder.Initialize(s));
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<<#= sourcesTypesString #>, TDestination> configurator);

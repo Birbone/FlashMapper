@@ -2,17 +2,19 @@
 <package >
   <metadata>
     <id>FlashMapper.MultiSource</id>
-    <version>1.0.0-beta2</version>
+    <version>1.0.1</version>
     <title>FlashMapper.MultiSource</title>
     <authors>Ilya Tiunov</authors>
     <owners>Ilya Tiunov</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Extension for FlashMapper that allows to map data from multiple sources.</description>
-    <releaseNotes>First test release.</releaseNotes>
+    <releaseNotes>
+      1. First stable release.
+    </releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>convert map data flashmapper multisource</tags>
     <dependencies>
-      <dependency id="FlashMapper" version="1.0.0-beta2" />
+      <dependency id="FlashMapper" version="1.0.1" />
     </dependencies>
   </metadata>
 </package>

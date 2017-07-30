@@ -24,22 +24,53 @@ namespace FlashMapper.DependancyInjection
 		var sourcesTypesString = string.Join(", ", Enumerable.Range(1, i + 1)
 			.Select(n => $"T{sourceTypePrefix}{n}"));
 #>
-    internal class FlashMapperBuilderConfigurator<<#= sourcesTypesString #>, TDestination> : IFlashMapperBuilderConfigurator<<#= sourcesTypesString #>, TDestination>
+    internal class FlashMapperBuilderConfigurator<<#= sourcesTypesString #>, TDestination, TBuilder> : IFlashMapperBuilderConfigurator<<#= sourcesTypesString #>, TDestination>
     {
-        private readonly IFlashMapperSettingsBuilder modelMapperSettingsBuilder;
-        private readonly MappingExpressionStorage<<#= sourcesTypesString #>, TDestination> mappingExpressionStorage;
-        public FlashMapperBuilderConfigurator(IFlashMapperSettingsBuilder modelMapperSettingsBuilder, MappingExpressionStorage<<#= sourcesTypesString #>, TDestination> mappingExpressionStorage)
+        private readonly IFlashMapperBuilderConfiguratorContext context;
+        public FlashMapperBuilderConfigurator(IFlashMapperBuilderConfiguratorContext context)
         {
-            this.modelMapperSettingsBuilder = modelMapperSettingsBuilder;
-            this.mappingExpressionStorage = mappingExpressionStorage;
+            this.context = context;
         }
 
+<#  if (i < maxNumberOfSources - 1)
+	{
+		var newParameterSourceTypeName = $"T{sourceTypePrefix}{i+2}";
+		var sourcesTypesWithNewParameterString = $"{sourcesTypesString}, {newParameterSourceTypeName}";
+#>
+		public IFlashMapperBuilderConfigurator<<#= sourcesTypesWithNewParameterString #>, TDestination> ResolveExtraParameter<<#= newParameterSourceTypeName #>>(Expression<Func<<#= sourcesTypesWithNewParameterString #>>> resolveParameterMethod)
+		{
+			Action<IMappingConfiguration, Expression<Func<<#= sourcesTypesString #>, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
+			Func<IMappingConfiguration, <#= sourcesTypesWithNewParameterString #>, TBuilder, TDestination> convertMethod = FlashMapperMultiSourceExtensions.Convert<<#= sourcesTypesWithNewParameterString #>, TBuilder, TDestination>;
+			Action<IMappingConfiguration, <#= sourcesTypesWithNewParameterString #>, TBuilder, TDestination> mapDataMethod = FlashMapperMultiSourceExtensions.MapData;
+			var step = new ResolveExtraParameterStep(resolveParameterMethod, convertMethod.Method, mapDataMethod.Method, createMappingMethod.Method);
+			context.Steps.Add(step);
+			return new FlashMapperBuilderConfigurator<<#= sourcesTypesWithNewParameterString #>, TDestination, TBuilder>(context);
+		}
+<#
+	}
+#>
         public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<<#= sourcesTypesString #>, TDestination>> mappingExpression)
         {
-            mappingExpressionStorage.MappingExpression = mappingExpression;
-            return modelMapperSettingsBuilder;
+			Action<IMappingConfiguration, Expression<Func<<#= sourcesTypesString #>, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
+			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
+			context.Steps.Add(step);
+            return context.SettingsBuilder;
         }
     }
 
 <#  } #>
+<#	
+	var delegateGenericArgumentPrefix = "T";
+	var delegateParameterPrefix = "t";
+	var delegateNumberOfArguments = 17;
+	var delegateParameters = Enumerable.Range(1, delegateNumberOfArguments)
+		.Select(i => new 
+		{
+			GenericTypeArgument = $"{delegateGenericArgumentPrefix}{i}",
+			Parameter = $"{delegateParameterPrefix}{i}"
+		});
+	var delegateGenericArgumentsString = string.Join(",", delegateParameters.Select(p => $"in {p.GenericTypeArgument}"));
+	var delegateParametersString = string.Join(", ", delegateParameters.Select(p => $"{p.GenericTypeArgument} {p.Parameter}"));
+#>	
+	internal delegate void Action<<#= delegateGenericArgumentsString #>>(<#= delegateParametersString #>);
 }

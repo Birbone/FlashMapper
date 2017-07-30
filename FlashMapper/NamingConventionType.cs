@@ -1,5 +1,8 @@
 namespace FlashMapper
 {
+    /// <summary>
+    /// Specifies type of the naming convention
+    /// </summary>
     public enum NamingConventionType
     {
         Unspecified = 0,
