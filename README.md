@@ -1,2 +1,2 @@
 # FlashMapper
-.net extension for mapping object properties
+.net library for mapping object properties
