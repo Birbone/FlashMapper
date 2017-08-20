@@ -20,7 +20,7 @@ namespace FlashMapper.Tests
             configurator.ResolveExtraParameter(op => TestData.Orders.All.First(o => o.Id == op.OrderId))
                 .ResolveExtraParameter((op, o) => TestData.StoreItems.All.First(si => si.Id == op.StoreItemId))
                 .ResolveExtraParameter((op, o, si) => TestData.People.All.First(p => p.PersonId == recipientId))
-                .ConfigureMapping((op, o, si, r) => new SinglePositionOrder
+                .CreateMapping((op, o, si, r) => new SinglePositionOrder
                 {
                     Id = o.Id,
                     Address = r.Address

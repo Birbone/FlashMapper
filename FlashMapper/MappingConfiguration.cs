@@ -11,7 +11,7 @@ using FlashMapper.Services.Settings;
 
 namespace FlashMapper
 {
-    public class MappingConfiguration : IMappingConfiguration
+    public sealed class MappingConfiguration : IMappingConfiguration
     {
         private readonly IEnumerable<IFlashMapperService> customServices;
         private readonly IFlashMapperDependencyResolver dependencyResolver;
@@ -25,9 +25,9 @@ namespace FlashMapper
 
         public MappingConfiguration(IEnumerable<IFlashMapperService> customServices)
         {
-            this.customServices = customServices;
-            InstanceId = Guid.NewGuid();
             var customServicesArray = customServices.ToArray();
+            this.customServices = customServicesArray;
+            InstanceId = Guid.NewGuid();
 
             dependencyResolver = customServicesArray.Length > 0
                 ? new FlashMapperDependencyResolver(ModuleConfiguration.GetDefaultResolver(), customServicesArray)
@@ -37,8 +37,7 @@ namespace FlashMapper
             defaultFlashMapperSettings = dependencyResolver.GetService<IDefaultFlashMapperSettingsProvider>().GetDefaultSettings();
             dependantConfigurations = new List<IMappingConfiguration>();
         }
-
-
+        
         public void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression)
         {
             CreateMapping(mappingExpression, defaultFlashMapperSettings, dependencyResolver);

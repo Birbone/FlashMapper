@@ -6,7 +6,7 @@ namespace FlashMapper.Tests
     public class PersonReportModelBuilder: FlashMapperBuilder<Person, PersonReportModel, PersonReportModelBuilder>
     {
         private readonly int age;
-
+        
         public PersonReportModelBuilder(IMappingConfiguration mappingConfiguration, int age) : base(mappingConfiguration)
         {
             this.age = age;
@@ -14,7 +14,7 @@ namespace FlashMapper.Tests
 
         protected override void ConfigureMapping(IFlashMapperBuilderConfigurator<Person, PersonReportModel> configurator)
         {
-            configurator.ConfigureMapping(
+            configurator.CreateMapping(
                     p => new PersonReportModel
                     {
                         Age = age

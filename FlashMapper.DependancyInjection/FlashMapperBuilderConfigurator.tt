@@ -49,7 +49,7 @@ namespace FlashMapper.DependancyInjection
 <#
 	}
 #>
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<<#= sourcesTypesString #>, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<<#= sourcesTypesString #>, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<<#= sourcesTypesString #>, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);

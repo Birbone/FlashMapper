@@ -35,7 +35,7 @@ namespace FlashMapper.DependancyInjection
 <#
 	}
 #>
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<<#= sourcesTypesString #>, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<<#= sourcesTypesString #>, TDestination>> mappingExpression);
     }
 
 <#  } #>

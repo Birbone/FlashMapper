@@ -1,0 +1,27 @@
+﻿<Window x:Class="FlashMapper.PerformanceTests.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:FlashMapper.PerformanceTests"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
+            <Button Margin="5 0" Padding="10 1" Click="Button_Click" x:Name="IdenticalTestButton">Identical Models</Button>
+            <Button Margin="5 0" Padding="10 1" x:Name="IgnoreTestButton" Click="IgnoreTestButton_Click">Ignore</Button>
+            <Button Margin="5 0" Padding="10 1" x:Name="FlashMapperInternal" Click="FlashMapperInternal_Click">FM Internal</Button>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Center">
+            <Label x:Name="TestName" Margin="5 0"></Label>
+            <Label x:Name="TestInfo" Margin="5 0"></Label>
+        </StackPanel>
+        
+        <DataGrid Grid.Row="2" Margin="5 0" x:Name="ResultsGrid" IsReadOnly="True"></DataGrid>
+    </Grid>
+</Window>

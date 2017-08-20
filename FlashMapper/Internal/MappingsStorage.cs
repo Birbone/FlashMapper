@@ -5,7 +5,7 @@ using FlashMapper.Services;
 
 namespace FlashMapper.Internal
 {
-    public class MappingsStorage : IMappingsStorage
+    public sealed class MappingsStorage : IMappingsStorage
     {
         private readonly MappingConfiguration mappingConfiguration;
         private readonly Queue<IMappingStorageCleaner> storagesToCleanUp;

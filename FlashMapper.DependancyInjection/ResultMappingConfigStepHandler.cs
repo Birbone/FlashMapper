@@ -1,5 +1,6 @@
 using System;
 using System.Linq.Expressions;
+using FlashMapper.Services.GeneratingMappings;
 
 namespace FlashMapper.DependancyInjection
 {

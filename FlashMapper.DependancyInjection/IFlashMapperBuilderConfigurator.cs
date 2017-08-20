@@ -12,84 +12,84 @@ namespace FlashMapper.DependancyInjection
     public interface IFlashMapperBuilderConfigurator<TSource1, TDestination>
     {
 		IFlashMapperBuilderConfigurator<TSource1, TSource2, TDestination> ResolveExtraParameter<TSource2>(Expression<Func<TSource1, TSource2>> resolveParameterMethod);
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TDestination>> mappingExpression);
     }
 
     public interface IFlashMapperBuilderConfigurator<TSource1, TSource2, TDestination>
     {
 		IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TDestination> ResolveExtraParameter<TSource3>(Expression<Func<TSource1, TSource2, TSource3>> resolveParameterMethod);
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TDestination>> mappingExpression);
     }
 
     public interface IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TDestination>
     {
 		IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TDestination> ResolveExtraParameter<TSource4>(Expression<Func<TSource1, TSource2, TSource3, TSource4>> resolveParameterMethod);
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TDestination>> mappingExpression);
     }
 
     public interface IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TDestination>
     {
 		IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination> ResolveExtraParameter<TSource5>(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5>> resolveParameterMethod);
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TDestination>> mappingExpression);
     }
 
     public interface IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>
     {
 		IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination> ResolveExtraParameter<TSource6>(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6>> resolveParameterMethod);
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>> mappingExpression);
     }
 
     public interface IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>
     {
 		IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination> ResolveExtraParameter<TSource7>(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7>> resolveParameterMethod);
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>> mappingExpression);
     }
 
     public interface IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>
     {
 		IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination> ResolveExtraParameter<TSource8>(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8>> resolveParameterMethod);
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>> mappingExpression);
     }
 
     public interface IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>
     {
 		IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination> ResolveExtraParameter<TSource9>(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9>> resolveParameterMethod);
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>> mappingExpression);
     }
 
     public interface IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>
     {
 		IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination> ResolveExtraParameter<TSource10>(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10>> resolveParameterMethod);
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>> mappingExpression);
     }
 
     public interface IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>
     {
 		IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination> ResolveExtraParameter<TSource11>(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11>> resolveParameterMethod);
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>> mappingExpression);
     }
 
     public interface IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>
     {
 		IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination> ResolveExtraParameter<TSource12>(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12>> resolveParameterMethod);
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>> mappingExpression);
     }
 
     public interface IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>
     {
 		IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination> ResolveExtraParameter<TSource13>(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13>> resolveParameterMethod);
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>> mappingExpression);
     }
 
     public interface IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>
     {
 		IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination> ResolveExtraParameter<TSource14>(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14>> resolveParameterMethod);
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>> mappingExpression);
     }
 
     public interface IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>
     {
-        IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>> mappingExpression);
+        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>> mappingExpression);
     }
 
 }

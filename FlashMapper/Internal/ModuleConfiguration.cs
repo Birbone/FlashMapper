@@ -33,7 +33,7 @@ namespace FlashMapper.Internal
             result.RegisterService<IMemberInitUserInputParser>(r => new MemberInitUserInputParser());
             result.RegisterService<INewUserInputParser>(r => new NewUserInputParser());
             result.RegisterService<IMappingExpressionAutocompleteService>(r => new MappingExpressionAutocompleteService(r.GetService<IPropertyValueExpressionResolver>(), r.GetService<IUserInputParser>(), r.GetService<IMapExpressionPostProcessor>()));
-            result.RegisterService<IMappingGenerator>(r => new MappingGenerator(r.GetService<IMappingExpressionAutocompleteService>()));
+            result.RegisterService<IMappingGenerator>(r => new MappingGenerator(r.GetService<IMappingExpressionAutocompleteService>(), r.GetService<IExpressionCompiler>()));
             result.RegisterService<IPropertyNameComparer>(r => new PropertyNameComparer(r.GetService<IPropertyPrefixLocator>(), new ISpecificPropertyNameComparer[]
             {
                 r.GetService<INamingUnspecifiedPropertyNameComparer>(),
@@ -75,6 +75,7 @@ namespace FlashMapper.Internal
             result.RegisterService<IMappingsStorageFactory>(r => new MappingsStorageFactory());
             result.RegisterService<IFlashMapperSettingsExtender>(r => new FlashMapperSettingsExtender());
             result.RegisterService<IFlashMapperCustomServiceBuilderFactory>(r => new FlashMapperCustomServiceBuilderFactory(r));
+            result.RegisterService<IExpressionCompiler>(r => new ExpressionCompiler());
             return result;
         }
     }

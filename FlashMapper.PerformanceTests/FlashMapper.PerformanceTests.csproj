@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{9E050F93-D693-4E83-8077-AF471C191393}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>FlashMapper.PerformanceTests</RootNamespace>
+    <AssemblyName>FlashMapper.PerformanceTests</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=6.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.6.1.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Services\IdenticalModelsTest\AutoMapperIdenticalTestParticipant.cs" />
+    <Compile Include="Services\IdenticalModelsTest\FlashMapperBuilderIdenticalTestParticipant.cs" />
+    <Compile Include="Services\IdenticalModelsTest\FlashMapperIdenticalBuilder.cs" />
+    <Compile Include="Services\IdenticalModelsTest\FlashMapperIdenticalTestParticipant.cs" />
+    <Compile Include="Services\IdenticalModelsTest\IdenticalTestDataProvider.cs" />
+    <Compile Include="Services\IdenticalModelsTest\IFlashMapperIdenticalBuilder.cs" />
+    <Compile Include="Services\IdenticalModelsTest\IManualIdenticalBuilder.cs" />
+    <Compile Include="Services\IdenticalModelsTest\ManualIdenticalBuilder.cs" />
+    <Compile Include="Services\IdenticalModelsTest\ManualIdenticalTestParticipant.cs" />
+    <Compile Include="Services\IgnoreTest\AutoMapperIgnoreTestParticipant.cs" />
+    <Compile Include="Services\IgnoreTest\FlashMapperBuilderIgnoreTestParticipant.cs" />
+    <Compile Include="Services\IgnoreTest\FlashMapperIgnoreBuilder.cs" />
+    <Compile Include="Services\IgnoreTest\FlashMapperIgnoreTestParticipant.cs" />
+    <Compile Include="Services\IgnoreTest\IgnoreTestDataProvider.cs" />
+    <Compile Include="Services\IgnoreTest\ManualIgnoreBuilder.cs" />
+    <Compile Include="Services\IgnoreTest\ManualIgnoreTestParticipant.cs" />
+    <Compile Include="Services\IPerfomanceTestConfiguration.cs" />
+    <Compile Include="Services\IPerformanceTest.cs" />
+    <Compile Include="Services\IPerformanceTestDataProvider.cs" />
+    <Compile Include="Services\IPerformanceTestParticipant.cs" />
+    <Compile Include="Services\IRandomDataProvider.cs" />
+    <Compile Include="Services\ParticipantTestResult.cs" />
+    <Compile Include="Services\PerfomanceTestConfiguration.cs" />
+    <Compile Include="Services\PerformanceTest.cs" />
+    <Compile Include="Services\PerformanceTestResult.cs" />
+    <Compile Include="Services\RandomDataProvider.cs" />
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Destination.cs" />
+    <Compile Include="Models\IdenticalTestSource.cs" />
+    <Compile Include="Models\IgnoreTestSource.cs" />
+    <Compile Include="Models\MultipleSourceTestSource1.cs" />
+    <Compile Include="Models\MultipleSourceTestSource2.cs" />
+    <Compile Include="Models\MultipleSourceTestSource3.cs" />
+    <Compile Include="Models\NamingConventionsTestSource.cs" />
+    <Compile Include="Models\ResolveExtraParameterTestSource1.cs" />
+    <Compile Include="Models\ResolveExtraParameterTestSource2.cs" />
+    <Compile Include="Models\ResolveExtraParameterTestSource3.cs" />
+    <Compile Include="PerformanceAppModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlashMapper.DependancyInjection\FlashMapper.DependancyInjection.csproj">
+      <Project>{6025c55b-79e9-47e4-be4f-4f02b6cf8852}</Project>
+      <Name>FlashMapper.DependancyInjection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlashMapper.MultiSource\FlashMapper.MultiSource.csproj">
+      <Project>{d8d736d0-2925-4631-bbd3-4d8feef71328}</Project>
+      <Name>FlashMapper.MultiSource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlashMapper\FlashMapper.csproj">
+      <Project>{fa66e867-d481-4313-9af0-aeb4e03d3ab2}</Project>
+      <Name>FlashMapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

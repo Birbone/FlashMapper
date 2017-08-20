@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
+using System.Reflection.Emit;
 using FlashMapper.Models;
 using FlashMapper.Services.GeneratingMappings;
 using FlashMapper.Services.ParsingUserInput;
@@ -13,7 +15,7 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
         private readonly IPropertyValueExpressionResolver propertyValueExpressionResolver;
         private readonly IUserInputParser userInputParser;
         private readonly IMapExpressionPostProcessor mapExpressionPostProcessor;
-
+        
         public MappingExpressionAutocompleteService(IPropertyValueExpressionResolver propertyValueExpressionResolver, 
             IUserInputParser userInputParser,
             IMapExpressionPostProcessor mapExpressionPostProcessor)

@@ -2,6 +2,7 @@ using System;
 
 namespace FlashMapper
 {
+    [Serializable]
     public class FlashMapperException : Exception
     {
         public FlashMapperException() {}

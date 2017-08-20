@@ -50,6 +50,8 @@
     <Compile Include="Internal\Utils\IFlashMapperDependencyResolver.cs" />
     <Compile Include="FlashMapperExtensions.cs" />
     <Compile Include="FlashMapperGenericConverter.cs" />
+    <Compile Include="Internal\Implementations\GeneratingMappings\ExpressionCompiler.cs" />
+    <Compile Include="Services\GeneratingMappings\IExpressionCompiler.cs" />
     <Compile Include="Services\IFlashMapperService.cs" />
     <Compile Include="Internal\Implementations\GeneratingMappings\AutomaticPropertyValueExpressionResolver.cs" />
     <Compile Include="Internal\Implementations\MatchingProperties\CamelCasePropertyNameTokenizer.cs" />

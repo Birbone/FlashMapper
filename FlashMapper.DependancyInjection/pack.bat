@@ -1,0 +1,1 @@
+..\nuget pack FlashMapper.DependancyInjection.csproj -OutputDirectory nuget\ -Prop Configuration=Release -Build

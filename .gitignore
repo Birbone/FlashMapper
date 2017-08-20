@@ -18,3 +18,7 @@
 /FlashMapper.MultiSource/nuget.exe
 /FlashMapper.Tests/bin
 /FlashMapper.Tests/obj
+/.vs/FlashMapper/v15/.suo
+/FlashMapper.PerformanceTests/bin
+/FlashMapper.PerformanceTests/obj
+/packages

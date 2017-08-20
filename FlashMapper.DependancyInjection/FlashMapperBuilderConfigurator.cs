@@ -26,7 +26,7 @@ namespace FlashMapper.DependancyInjection
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<TSource1, TSource2, TDestination, TBuilder>(context);
 		}
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
@@ -52,7 +52,7 @@ namespace FlashMapper.DependancyInjection
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TDestination, TBuilder>(context);
 		}
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TSource2, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
@@ -78,7 +78,7 @@ namespace FlashMapper.DependancyInjection
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TDestination, TBuilder>(context);
 		}
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TSource2, TSource3, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
@@ -104,7 +104,7 @@ namespace FlashMapper.DependancyInjection
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination, TBuilder>(context);
 		}
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TSource2, TSource3, TSource4, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
@@ -130,7 +130,7 @@ namespace FlashMapper.DependancyInjection
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination, TBuilder>(context);
 		}
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
@@ -156,7 +156,7 @@ namespace FlashMapper.DependancyInjection
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination, TBuilder>(context);
 		}
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
@@ -182,7 +182,7 @@ namespace FlashMapper.DependancyInjection
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination, TBuilder>(context);
 		}
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
@@ -208,7 +208,7 @@ namespace FlashMapper.DependancyInjection
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination, TBuilder>(context);
 		}
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
@@ -234,7 +234,7 @@ namespace FlashMapper.DependancyInjection
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination, TBuilder>(context);
 		}
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
@@ -260,7 +260,7 @@ namespace FlashMapper.DependancyInjection
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination, TBuilder>(context);
 		}
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
@@ -286,7 +286,7 @@ namespace FlashMapper.DependancyInjection
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination, TBuilder>(context);
 		}
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
@@ -312,7 +312,7 @@ namespace FlashMapper.DependancyInjection
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination, TBuilder>(context);
 		}
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
@@ -338,7 +338,7 @@ namespace FlashMapper.DependancyInjection
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination, TBuilder>(context);
 		}
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
@@ -355,7 +355,7 @@ namespace FlashMapper.DependancyInjection
             this.context = context;
         }
 
-        public IFlashMapperSettingsBuilder ConfigureMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>> mappingExpression)
+        public IFlashMapperSettingsBuilder CreateMapping(Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>> mappingExpression)
         {
 			Action<IMappingConfiguration, Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TBuilder, TDestination>>, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder>, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method);
