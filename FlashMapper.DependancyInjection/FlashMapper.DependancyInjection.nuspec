@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>FlashMapper.DependancyInjection</id>
-    <version>1.0.1-beta1</version>
+    <version>1.0.1-beta2</version>
     <title>FlashMapper.DependancyInjection</title>
     <authors>Ilya Tiunov</authors>
     <owners>Ilya Tiunov</owners>

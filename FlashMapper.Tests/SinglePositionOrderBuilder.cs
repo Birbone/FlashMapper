@@ -10,7 +10,7 @@ namespace FlashMapper.Tests
     {
         private readonly int recipientId;
 
-        public SinglePositionOrderBuilder(IMappingConfiguration mappingConfiguration, int recipientId) : base(mappingConfiguration)
+        public SinglePositionOrderBuilder(IMappingConfiguration mappingConfiguration, int recipientId): base(mappingConfiguration)
         {
             this.recipientId = recipientId;
         }

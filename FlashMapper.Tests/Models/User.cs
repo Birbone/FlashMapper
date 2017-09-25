@@ -1,3 +1,5 @@
+using System;
+
 namespace FlashMapper.Tests.Models
 {
     public class User

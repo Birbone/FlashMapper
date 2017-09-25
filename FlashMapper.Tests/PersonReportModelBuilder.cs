@@ -7,7 +7,7 @@ namespace FlashMapper.Tests
     {
         private readonly int age;
         
-        public PersonReportModelBuilder(IMappingConfiguration mappingConfiguration, int age) : base(mappingConfiguration)
+        public PersonReportModelBuilder(IMappingConfiguration mappingConfiguration, int age): base(mappingConfiguration)
         {
             this.age = age;
         }
