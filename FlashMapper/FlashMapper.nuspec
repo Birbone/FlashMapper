@@ -6,10 +6,8 @@
     <authors>Ilya Tiunov</authors>
     <owners>Ilya Tiunov</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Library that allows you to specify relations between two data models and then use it to convert from one to another.</description>
-    <releaseNotes>
-      Minor fixes
-    </releaseNotes>
+    <description>.net-library that allows you to map properties of two classes and then use result mapping to convert from one to another.</description>
+    <releaseNotes>Minor fixes.</releaseNotes>
     <tags>convert map data mapper flashmapper</tags>
     <dependencies />
   </metadata>
