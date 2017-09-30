@@ -12,8 +12,7 @@ namespace FlashMapper.Services.MatchingProperties
         /// </summary>
         /// <param name="sourceName"></param>
         /// <param name="destinationName"></param>
-        /// <param name="modelMapperSettings"></param>
         /// <returns></returns>
-        PropertyNameCompareRank Compare(string sourceName, string destinationName, IFlashMapperSettings modelMapperSettings);
+        PropertyNameCompareRank Compare(string sourceName, string destinationName);
     }
 }

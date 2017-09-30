@@ -23,6 +23,7 @@ using System.Linq.Expressions;
 using FlashMapper.MultiSource;
 using FlashMapper.Services.GeneratingMappings;
 using FlashMapper.Services.MatchingProperties;
+using FlashMapper.Models;
 
 namespace FlashMapper
 {
@@ -61,7 +62,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<<#= sourcesTypesString#>, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<<#= sourcesTypesString#>, TDestination>(this IMappingConfiguration mappingConfiguration, <#= sourceMethodParametersString#>, TDestination destination)

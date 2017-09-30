@@ -12,9 +12,13 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
     public class AutomaticPropertyValueExpressionResolver : IAutomaticPropertyValueExpressionResolver
     {
         private readonly IPropertyNameComparer propertyNameComparer;
-        public AutomaticPropertyValueExpressionResolver(IPropertyNameComparer propertyNameComparer)
+        private readonly IFlashMapperSettings settings;
+
+        public AutomaticPropertyValueExpressionResolver(IPropertyNameComparer propertyNameComparer, 
+            IFlashMapperSettings settings)
         {
             this.propertyNameComparer = propertyNameComparer;
+            this.settings = settings;
         }
 
         private string GetPropertiesCollisionError(PropertyInfo destinationPropery, IEnumerable<PropertyInfo> matchingProperties)
@@ -29,9 +33,8 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
         }
 
         public bool TryGetPropertyValueExpression<TSource, TDestination>(ParameterExpression source,
-            PropertyInfo property,
+            PropertyInfo property, 
             MemberBinding[] userBindings, 
-            IFlashMapperSettings modelMapperSettings, 
             out Expression propertyValueExpression)
         {
             propertyValueExpression = null;
@@ -43,7 +46,7 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
                     sp => new
                     {
                         Property = sp,
-                        Rank = propertyNameComparer.Compare(property.Name, sp.Name, modelMapperSettings)
+                        Rank = propertyNameComparer.Compare(property.Name, sp.Name)
                     });
 
             var matchingProperties = rankedProperties.Where(pr => pr.Rank != PropertyNameCompareRank.DoNotMatch)
@@ -54,7 +57,7 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
 
             if (matchingProperties.Length == 0)
                 return false;
-            if (matchingProperties.Length > 1 && modelMapperSettings.CollisionBehavior != SelectSourceCollisionBehavior.ChooseAny)
+            if (matchingProperties.Length > 1 && settings.CollisionBehavior != SelectSourceCollisionBehavior.ChooseAny)
                 throw new PropertyIsNotMappedException(property.Name, GetPropertiesCollisionError(property, matchingProperties));
             var matchingProperty = matchingProperties[0];
             propertyValueExpression = Expression.Property(source, matchingProperty);

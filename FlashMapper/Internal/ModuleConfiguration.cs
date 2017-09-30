@@ -4,6 +4,7 @@ using FlashMapper.Internal.Implementations.MatchingProperties;
 using FlashMapper.Internal.Implementations.ParsingUserInput;
 using FlashMapper.Internal.Implementations.Settings;
 using FlashMapper.Internal.Utils;
+using FlashMapper.Models;
 using FlashMapper.Services;
 using FlashMapper.Services.GeneratingMappings;
 using FlashMapper.Services.MatchingProperties;
@@ -17,14 +18,15 @@ namespace FlashMapper.Internal
         public static FlashMapperDependencyResolver GetDefaultResolver()
         {
             var result = new FlashMapperDependencyResolver();
+            
             result.RegisterService<IPropertyValueExpressionResolver>(r => new PropertyValueExpressionResolver(new ISpecificPropertyValueExpressionResolver[]
             {
                 r.GetService<IUserInputPropertyValueExpressionResolver>(),
                 r.GetService<IAutomaticPropertyValueExpressionResolver>(),
-            }.Union(r.GetServices<ICustomPropertyValueExpressionResolver>())));
+            }.Union(r.GetServices<ICustomPropertyValueExpressionResolver>()), r.GetService<IFlashMapperSettings>()));
 
             result.RegisterService<IUserInputPropertyValueExpressionResolver>(r => new UserInputPropertyValueExpressionResolver());
-            result.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new AutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()));
+            result.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new AutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
             result.RegisterService<IUserInputParser>(r => new UserInputParser(new ISpecificUserInputParser[]
             {
                 r.GetService<IMemberInitUserInputParser>(),
@@ -33,16 +35,16 @@ namespace FlashMapper.Internal
             result.RegisterService<IMemberInitUserInputParser>(r => new MemberInitUserInputParser());
             result.RegisterService<INewUserInputParser>(r => new NewUserInputParser());
             result.RegisterService<IMappingExpressionAutocompleteService>(r => new MappingExpressionAutocompleteService(r.GetService<IPropertyValueExpressionResolver>(), r.GetService<IUserInputParser>(), r.GetService<IMapExpressionPostProcessor>()));
-            result.RegisterService<IMappingGenerator>(r => new MappingGenerator(r.GetService<IMappingExpressionAutocompleteService>(), r.GetService<IExpressionCompiler>()));
+            result.RegisterService<IMappingGenerator>(r => new MappingGenerator(r.GetService<IMappingExpressionAutocompleteService>(), r.GetService<IExpressionCompiler>(), r.GetService<IFlashMapperSettings>()));
             result.RegisterService<IPropertyNameComparer>(r => new PropertyNameComparer(r.GetService<IPropertyPrefixLocator>(), new ISpecificPropertyNameComparer[]
             {
                 r.GetService<INamingUnspecifiedPropertyNameComparer>(),
                 r.GetService<IIgnoreCasePropertyNameComparer>(),
                 r.GetService<ITokenizedPropertyNameComparer>()
-            }.Union(r.GetServices<ICustomPropertyNameComparer>())));
-            result.RegisterService<INamingUnspecifiedPropertyNameComparer>(r => new NamingUnspecifiedPropertyNameComparer());
-            result.RegisterService<IIgnoreCasePropertyNameComparer>(r => new IgnoreCasePropertyNameComparer());
-            result.RegisterService<ITokenizedPropertyNameComparer>(r => new TokenizedPropertyNameComparer(r.GetService<IPropertyNameTokenizerResolver>(), r.GetService<IPropertyNameAbbrevationHandler>()));
+            }.Union(r.GetServices<ICustomPropertyNameComparer>()), r.GetService<IFlashMapperSettings>()));
+            result.RegisterService<INamingUnspecifiedPropertyNameComparer>(r => new NamingUnspecifiedPropertyNameComparer(r.GetService<IFlashMapperSettings>()));
+            result.RegisterService<IIgnoreCasePropertyNameComparer>(r => new IgnoreCasePropertyNameComparer(r.GetService<IFlashMapperSettings>()));
+            result.RegisterService<ITokenizedPropertyNameComparer>(r => new TokenizedPropertyNameComparer(r.GetService<IPropertyNameTokenizerResolver>(), r.GetService<IPropertyNameAbbrevationHandler>(), r.GetService<IFlashMapperSettings>()));
             result.RegisterService<IPropertyNameTokenizerResolver>(r => new PropertyNameTokenizerResolver(new IPropertyNameTokenizerFactory[]
             {
                 r.GetService<ICamelCasePropertyNameTokenizerFactory>(),
@@ -70,6 +72,7 @@ namespace FlashMapper.Internal
             result.RegisterService<IImplicitIgnoreNodeChecker>(r => new ImplicitIgnoreNodeChecker());
             result.RegisterService<IExplicitIgnoreNodeChecker>(r => new ExplicitIgnoreNodeChecker(r.GetService<IImplicitIgnoreNodeChecker>()));
             result.RegisterService<IDefaultFlashMapperSettingsProvider>(r => new DefaultFlashMapperSettingsProvider(r.GetService<IFlashMapperSettingsBuilderFactory>()));
+            result.RegisterService<IFlashMapperSettings>(r => r.GetService<IDefaultFlashMapperSettingsProvider>().GetDefaultSettings());
             result.RegisterService<IFlashMapperSettingsBuilderFactory>(r => new FlashMapperSettingsBuilderFactory());
             result.RegisterService<IPropertyPrefixLocator>(r => new PropertyPrefixLocator());
             result.RegisterService<IMappingsStorageFactory>(r => new MappingsStorageFactory());

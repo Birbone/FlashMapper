@@ -4,6 +4,6 @@ namespace FlashMapper.Services.MatchingProperties
 {
     public interface IPropertyNameComparer : IFlashMapperService
     {
-        PropertyNameCompareRank Compare(string searchPropertyName, string optionPropertyName, IFlashMapperSettings modelMapperSettings);
+        PropertyNameCompareRank Compare(string searchPropertyName, string optionPropertyName);
     }
 }

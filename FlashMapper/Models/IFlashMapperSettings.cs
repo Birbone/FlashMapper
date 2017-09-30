@@ -1,6 +1,8 @@
+using FlashMapper.Services;
+
 namespace FlashMapper.Models
 {
-    public interface IFlashMapperSettings
+    public interface IFlashMapperSettings: IFlashMapperService
     {
         UnresolvedPropertyBehavior UnresolvedBehavior { get; }
         SelectSourceCollisionBehavior CollisionBehavior { get; }

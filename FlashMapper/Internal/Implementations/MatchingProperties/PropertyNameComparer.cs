@@ -8,11 +8,15 @@ namespace FlashMapper.Internal.Implementations.MatchingProperties
     public class PropertyNameComparer : IPropertyNameComparer
     {
         private readonly IPropertyPrefixLocator propertyPrefixLocator;
+        private readonly IFlashMapperSettings settings;
         private readonly IEnumerable<ISpecificPropertyNameComparer> specificPropertyNameComparers;
 
-        public PropertyNameComparer(IPropertyPrefixLocator propertyPrefixLocator, IEnumerable<ISpecificPropertyNameComparer> specificPropertyNameComparers)
+        public PropertyNameComparer(IPropertyPrefixLocator propertyPrefixLocator,
+            IEnumerable<ISpecificPropertyNameComparer> specificPropertyNameComparers,
+            IFlashMapperSettings settings)
         {
             this.propertyPrefixLocator = propertyPrefixLocator;
+            this.settings = settings;
             this.specificPropertyNameComparers = specificPropertyNameComparers.ToArray();
         }
 
@@ -26,16 +30,15 @@ namespace FlashMapper.Internal.Implementations.MatchingProperties
             }
         }
 
-        public PropertyNameCompareRank Compare(string searchPropertyName, string optionPropertyName,
-            IFlashMapperSettings modelMapperSettings)
+        public PropertyNameCompareRank Compare(string searchPropertyName, string optionPropertyName)
         {
-            var sourcePrefixes = modelMapperSettings.NamingConventions
+            var sourcePrefixes = settings.NamingConventions
                 .Source
                 .Prefixes
                 .With("")
                 .Distinct()
                 .ToArray();
-            var destinationPrefixes = modelMapperSettings.NamingConventions
+            var destinationPrefixes = settings.NamingConventions
                 .Destination
                 .Prefixes
                 .With("")
@@ -44,7 +47,7 @@ namespace FlashMapper.Internal.Implementations.MatchingProperties
             var sourceNameOptions = GetNameOptionsWithoutPrefix(optionPropertyName, sourcePrefixes);
             var destinationNameOptions = GetNameOptionsWithoutPrefix(searchPropertyName, destinationPrefixes);
             var nameCombinations = sourceNameOptions.GetAllCombinations(destinationNameOptions);
-            var rank = nameCombinations.SelectMany(nc => specificPropertyNameComparers.Select(c => c.Compare(nc.Source, nc.Destination, modelMapperSettings)))
+            var rank = nameCombinations.SelectMany(nc => specificPropertyNameComparers.Select(c => c.Compare(nc.Source, nc.Destination)))
                 .Max();
             return rank;
         }

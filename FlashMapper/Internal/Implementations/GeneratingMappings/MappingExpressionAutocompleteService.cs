@@ -23,8 +23,7 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
             this.mapExpressionPostProcessor = mapExpressionPostProcessor;
         }
         
-        public Expression<Func<TSource, TDestination>> CompleteBuildExpression<TSource, TDestination>(Expression<Func<TSource, TDestination>> inputExpression,
-            IFlashMapperSettings settings)
+        public Expression<Func<TSource, TDestination>> CompleteBuildExpression<TSource, TDestination>(Expression<Func<TSource, TDestination>> inputExpression)
         {
             var destinationType = typeof(TDestination);
             var source = inputExpression.Parameters[0];
@@ -35,7 +34,7 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
             {
                 assignDestination
             };
-            actions.AddRange(GetPropertyAssigns<TSource, TDestination>(source, destination, userInputParts.Bindings, settings));
+            actions.AddRange(GetPropertyAssigns<TSource, TDestination>(source, destination, userInputParts.Bindings));
             actions.Add(destination);
             var methodBody = Expression.Block(new[] {destination}, actions);
             var processedBody = mapExpressionPostProcessor.Process(methodBody);
@@ -44,14 +43,13 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
         }
 
 
-        public Expression<Action<TSource, TDestination>> CompleteMapDataExpression<TSource, TDestination>(Expression<Func<TSource, TDestination>> inputExpression,
-            IFlashMapperSettings settings)
+        public Expression<Action<TSource, TDestination>> CompleteMapDataExpression<TSource, TDestination>(Expression<Func<TSource, TDestination>> inputExpression)
         {
             var destinationType = typeof(TDestination);
             var source = inputExpression.Parameters[0];
             var destination = Expression.Parameter(destinationType);
             var userInputParts = userInputParser.GetUserInputParts(inputExpression.Body);
-            var methodBody = Expression.Block(GetPropertyAssigns<TSource, TDestination>(source, destination, userInputParts.Bindings, settings));
+            var methodBody = Expression.Block(GetPropertyAssigns<TSource, TDestination>(source, destination, userInputParts.Bindings));
             var processedBody = mapExpressionPostProcessor.Process(methodBody);
             var resultLambda = Expression.Lambda<Action<TSource, TDestination>>(processedBody, source, destination);
             return resultLambda;
@@ -59,8 +57,7 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
         
         private IEnumerable<Expression> GetPropertyAssigns<TSource, TDestination>(ParameterExpression source, 
             ParameterExpression destination, 
-            MemberBinding[] userInputBindings,
-            IFlashMapperSettings modelMapperSettings)
+            MemberBinding[] userInputBindings)
         {
             var destinationType = typeof(TDestination);
             var propertiesToSet = destinationType.GetProperties()
@@ -69,7 +66,7 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
             foreach (var property in propertiesToSet)
             {
                 var propertyExpression = propertyValueExpressionResolver.GetPropertyValueExpression<TSource, TDestination>(source, property,
-                    userInputBindings, modelMapperSettings);
+                    userInputBindings);
                 var destinationProperty = Expression.Property(destination, property);
                 var destinationPropertyAssign = Expression.Assign(destinationProperty, propertyExpression);
                 yield return destinationPropertyAssign;

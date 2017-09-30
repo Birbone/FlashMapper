@@ -11,10 +11,13 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
 {
     public class PropertyValueExpressionResolver : IPropertyValueExpressionResolver
     {
+        private readonly IFlashMapperSettings settings;
         private readonly IEnumerable<ISpecificPropertyValueExpressionResolver> specificResolvers;
 
-        public PropertyValueExpressionResolver(IEnumerable<ISpecificPropertyValueExpressionResolver> specificResolvers)
+        public PropertyValueExpressionResolver(IEnumerable<ISpecificPropertyValueExpressionResolver> specificResolvers,
+            IFlashMapperSettings settings)
         {
+            this.settings = settings;
             this.specificResolvers = specificResolvers.ToArray();
         }
 
@@ -28,14 +31,13 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
 
         public Expression GetPropertyValueExpression<TSource, TDestination>(ParameterExpression source, 
             PropertyInfo property, 
-            MemberBinding[] userBindings, 
-            IFlashMapperSettings modelMapperSettings)
+            MemberBinding[] userBindings)
         {
             Expression result = null;
-            if (specificResolvers.Any(r => r.TryGetPropertyValueExpression<TSource, TDestination>(source, property, userBindings, modelMapperSettings, out result)))
+            if (specificResolvers.Any(r => r.TryGetPropertyValueExpression<TSource, TDestination>(source, property, userBindings, out result)))
                 return result;
 
-            if (modelMapperSettings.UnresolvedBehavior == UnresolvedPropertyBehavior.Ignore)
+            if (settings.UnresolvedBehavior == UnresolvedPropertyBehavior.Ignore)
                 return GetIgnoreExpression(property.PropertyType);
 
             throw new PropertyIsNotMappedException(property.Name, $"Mapping is not specified for property {property.Name} of type {typeof(TDestination).Name}.");

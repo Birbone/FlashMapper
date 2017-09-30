@@ -46,8 +46,7 @@ namespace FlashMapper.DependancyInjection
             return result;
         }
 
-        public Expression<Func<TSource, TDestination>> CompleteBuildExpression<TSource, TDestination>(Expression<Func<TSource, TDestination>> inputExpression, 
-            IFlashMapperSettings settings)
+        public Expression<Func<TSource, TDestination>> CompleteBuildExpression<TSource, TDestination>(Expression<Func<TSource, TDestination>> inputExpression)
         {
             var expressionBlocks = ParseExpression(inputExpression.Body);
             var resultExpressionBody = Expression.Block(new[] {expressionBlocks.ExtraParameterVariable},
@@ -55,8 +54,7 @@ namespace FlashMapper.DependancyInjection
             return Expression.Lambda<Func<TSource, TDestination>>(resultExpressionBody, inputExpression.Parameters);
         }
 
-        public Expression<Action<TSource, TDestination>> CompleteMapDataExpression<TSource, TDestination>(Expression<Func<TSource, TDestination>> inputExpression, 
-            IFlashMapperSettings settings)
+        public Expression<Action<TSource, TDestination>> CompleteMapDataExpression<TSource, TDestination>(Expression<Func<TSource, TDestination>> inputExpression)
         {
             var expressionBlocks = ParseExpression(inputExpression.Body);
             var resultExpressionBody = Expression.Block(new[] { expressionBlocks.ExtraParameterVariable },

@@ -12,6 +12,7 @@ using System.Linq.Expressions;
 using FlashMapper.MultiSource;
 using FlashMapper.Services.GeneratingMappings;
 using FlashMapper.Services.MatchingProperties;
+using FlashMapper.Models;
 
 namespace FlashMapper
 {
@@ -41,7 +42,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TDestination destination)
@@ -82,7 +83,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TSource3, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TSource3 source3, TDestination destination)
@@ -123,7 +124,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TSource3, TSource4, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TSource3 source3, TSource4 source4, TDestination destination)
@@ -164,7 +165,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TSource3 source3, TSource4 source4, TSource5 source5, TDestination destination)
@@ -205,7 +206,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TSource3 source3, TSource4 source4, TSource5 source5, TSource6 source6, TDestination destination)
@@ -246,7 +247,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TSource3 source3, TSource4 source4, TSource5 source5, TSource6 source6, TSource7 source7, TDestination destination)
@@ -287,7 +288,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TSource3 source3, TSource4 source4, TSource5 source5, TSource6 source6, TSource7 source7, TSource8 source8, TDestination destination)
@@ -328,7 +329,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TSource3 source3, TSource4 source4, TSource5 source5, TSource6 source6, TSource7 source7, TSource8 source8, TSource9 source9, TDestination destination)
@@ -369,7 +370,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TSource3 source3, TSource4 source4, TSource5 source5, TSource6 source6, TSource7 source7, TSource8 source8, TSource9 source9, TSource10 source10, TDestination destination)
@@ -410,7 +411,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TSource3 source3, TSource4 source4, TSource5 source5, TSource6 source6, TSource7 source7, TSource8 source8, TSource9 source9, TSource10 source10, TSource11 source11, TDestination destination)
@@ -451,7 +452,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TSource3 source3, TSource4 source4, TSource5 source5, TSource6 source6, TSource7 source7, TSource8 source8, TSource9 source9, TSource10 source10, TSource11 source11, TSource12 source12, TDestination destination)
@@ -492,7 +493,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TSource3 source3, TSource4 source4, TSource5 source5, TSource6 source6, TSource7 source7, TSource8 source8, TSource9 source9, TSource10 source10, TSource11 source11, TSource12 source12, TSource13 source13, TDestination destination)
@@ -533,7 +534,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TSource3 source3, TSource4 source4, TSource5 source5, TSource6 source6, TSource7 source7, TSource8 source8, TSource9 source9, TSource10 source10, TSource11 source11, TSource12 source12, TSource13 source13, TSource14 source14, TDestination destination)
@@ -574,7 +575,7 @@ namespace FlashMapper
             var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TSource15, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
             mappingConfiguration.CreateMapping(singleSourceExpression, settings, c => 
-				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>()))));
+				customServicesRegistration(c.RegisterService<IAutomaticPropertyValueExpressionResolver>(r => new MultiSourceAutomaticPropertyValueExpressionResolver(r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()))));
         }
 
         public static void MapData<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TSource15, TDestination>(this IMappingConfiguration mappingConfiguration, TSource1 source1, TSource2 source2, TSource3 source3, TSource4 source4, TSource5 source5, TSource6 source6, TSource7 source7, TSource8 source8, TSource9 source9, TSource10 source10, TSource11 source11, TSource12 source12, TSource13 source13, TSource14 source14, TSource15 source15, TDestination destination)

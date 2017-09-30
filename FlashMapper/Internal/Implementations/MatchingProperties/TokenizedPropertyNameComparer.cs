@@ -9,11 +9,15 @@ namespace FlashMapper.Internal.Implementations.MatchingProperties
     {
         private readonly IPropertyNameTokenizerResolver tokenizerResolver;
         private readonly IPropertyNameAbbrevationHandler propertyNameAbbrevationHandler;
+        private readonly IFlashMapperSettings settings;
 
-        public TokenizedPropertyNameComparer(IPropertyNameTokenizerResolver tokenizerResolver, IPropertyNameAbbrevationHandler propertyNameAbbrevationHandler)
+        public TokenizedPropertyNameComparer(IPropertyNameTokenizerResolver tokenizerResolver, 
+            IPropertyNameAbbrevationHandler propertyNameAbbrevationHandler,
+            IFlashMapperSettings settings)
         {
             this.tokenizerResolver = tokenizerResolver;
             this.propertyNameAbbrevationHandler = propertyNameAbbrevationHandler;
+            this.settings = settings;
         }
 
         private bool TryGetTokens(string propertyName, NamingConventionType namingConvention, out string[] tokens)
@@ -28,16 +32,16 @@ namespace FlashMapper.Internal.Implementations.MatchingProperties
             return true;
         }
 
-        public PropertyNameCompareRank Compare(string sourceName, string destinationName, IFlashMapperSettings modelMapperSettings)
+        public PropertyNameCompareRank Compare(string sourceName, string destinationName)
         {
             string[] sourceTokens;
             string[] destinationTokens;
-            if (!TryGetTokens(sourceName, modelMapperSettings.NamingConventions.Source.NamingConventionType,
+            if (!TryGetTokens(sourceName, settings.NamingConventions.Source.NamingConventionType,
                 out sourceTokens))
             {
                 return PropertyNameCompareRank.DoNotMatch;
             }
-            if (!TryGetTokens(destinationName, modelMapperSettings.NamingConventions.Destination.NamingConventionType,
+            if (!TryGetTokens(destinationName, settings.NamingConventions.Destination.NamingConventionType,
                 out destinationTokens))
             {
                 return PropertyNameCompareRank.DoNotMatch;

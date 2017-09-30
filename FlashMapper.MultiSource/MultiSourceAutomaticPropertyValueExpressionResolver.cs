@@ -12,10 +12,13 @@ namespace FlashMapper.MultiSource
     public class MultiSourceAutomaticPropertyValueExpressionResolver : IAutomaticPropertyValueExpressionResolver
     {
         private readonly IPropertyNameComparer propertyNameComparer;
+        private readonly IFlashMapperSettings settings;
 
-        public MultiSourceAutomaticPropertyValueExpressionResolver(IPropertyNameComparer propertyNameComparer)
+        public MultiSourceAutomaticPropertyValueExpressionResolver(IPropertyNameComparer propertyNameComparer,
+            IFlashMapperSettings settings)
         {
             this.propertyNameComparer = propertyNameComparer;
+            this.settings = settings;
         }
 
         private string GetPropertiesCollisionError(PropertyInfo destinationPropery, IEnumerable<RankedProperty> matchingProperties)
@@ -29,8 +32,7 @@ namespace FlashMapper.MultiSource
             return stringWriter.ToString();
         }
 
-        public bool TryGetPropertyValueExpression<TSource, TDestination>(ParameterExpression source, PropertyInfo property,
-            MemberBinding[] userBindings, IFlashMapperSettings modelMapperSettings, out Expression propertyValueExpression)
+        public bool TryGetPropertyValueExpression<TSource, TDestination>(ParameterExpression source, PropertyInfo property, MemberBinding[] userBindings, out Expression propertyValueExpression)
         {
             propertyValueExpression = null;
             var sourcesWrapType = typeof(TSource);
@@ -49,7 +51,7 @@ namespace FlashMapper.MultiSource
                         sp => new RankedProperty
                         {
                             Property = sp,
-                            Rank = propertyNameComparer.Compare(property.Name, sp.Name, modelMapperSettings),
+                            Rank = propertyNameComparer.Compare(property.Name, sp.Name),
                             SourceIndex = sourceIndex,
                             WrapProperty = sourcesWrapProperty
                         });
@@ -62,7 +64,7 @@ namespace FlashMapper.MultiSource
                 .ToArray();
             if (matchingProperties.Length == 0)
                 return false;
-            if (matchingProperties.Length > 1 && modelMapperSettings.CollisionBehavior != SelectSourceCollisionBehavior.ChooseAny)
+            if (matchingProperties.Length > 1 && settings.CollisionBehavior != SelectSourceCollisionBehavior.ChooseAny)
                 throw new PropertyIsNotMappedException(property.Name, GetPropertiesCollisionError(property, matchingProperties));
             var matchingProperty = matchingProperties[0];
             var sourceProperty = Expression.Property(source, matchingProperty.WrapProperty);

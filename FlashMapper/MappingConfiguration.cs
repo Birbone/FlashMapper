@@ -16,7 +16,6 @@ namespace FlashMapper
         private readonly IEnumerable<IFlashMapperService> customServices;
         private readonly IFlashMapperDependencyResolver dependencyResolver;
         private readonly IMappingsStorage mappingsStorage;
-        private readonly IFlashMapperSettings defaultFlashMapperSettings;
         private readonly List<IMappingConfiguration> dependantConfigurations;
 
         public MappingConfiguration(): this(Enumerable.Empty<IFlashMapperService>())
@@ -34,29 +33,32 @@ namespace FlashMapper
                 : ModuleConfiguration.GetDefaultResolver();
 
             mappingsStorage = dependencyResolver.GetService<IMappingsStorageFactory>().Create(this);
-            defaultFlashMapperSettings = dependencyResolver.GetService<IDefaultFlashMapperSettingsProvider>().GetDefaultSettings();
             dependantConfigurations = new List<IMappingConfiguration>();
         }
         
         public void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingExpression, defaultFlashMapperSettings, dependencyResolver);
+            CreateMapping(mappingExpression, dependencyResolver);
         }
 
         public void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, 
             Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
         {
-            CreateMapping(mappingExpression, ResolveCustomSettings(settings, dependencyResolver), dependencyResolver);
+            CreateMapping(mappingExpression, settings, c => c);
         }
         
-        public void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings, Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder> customServicesRegistration)
+        public void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, 
+            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings, 
+            Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder> customServicesRegistration)
         {
-            var modelMapperCustomServiceBuilder = dependencyResolver
-                .GetService<IFlashMapperCustomServiceBuilderFactory>()
-                .Create();
-            var resolver = customServicesRegistration(modelMapperCustomServiceBuilder).GetResultDependencyResolver();
-            var mappingSettings = ResolveCustomSettings(settings, resolver);
-            CreateMapping(mappingExpression, mappingSettings, resolver);
+            var flashMapperCustomServiceBuilderFactory = dependencyResolver
+                .GetService<IFlashMapperCustomServiceBuilderFactory>();
+            var customSettings = ResolveCustomSettings(settings, dependencyResolver);
+            var flashMapperCustomServiceBuilder = flashMapperCustomServiceBuilderFactory.Create()
+                .RegisterService(r => customSettings);
+            var resolver = customServicesRegistration(flashMapperCustomServiceBuilder)
+                .GetResultDependencyResolver();
+            CreateMapping(mappingExpression, resolver);
         }
 
         private IFlashMapperSettings ResolveCustomSettings(Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings,
@@ -64,15 +66,16 @@ namespace FlashMapper
         {
             var settingsBuilder = resolver.GetService<IFlashMapperSettingsBuilderFactory>().GetBuilder();
             var customSettings = settings(settingsBuilder).GetSettings();
+            var defaultFlashMapperSettings = resolver.GetService<IFlashMapperSettings>();
             var mappingSettings = resolver.GetService<IFlashMapperSettingsExtender>()
                 .Extend(defaultFlashMapperSettings, customSettings);
             return mappingSettings;
         }
         
-        private void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, IFlashMapperSettings settings, IFlashMapperDependencyResolver resolver)
+        private void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, IFlashMapperDependencyResolver resolver)
         {
             var mappingGenerator = resolver.GetService<IMappingGenerator>();
-            var mapping = mappingGenerator.GenerateCompleteMapping(mappingExpression, settings);
+            var mapping = mappingGenerator.GenerateCompleteMapping(mappingExpression);
             mappingsStorage.SetMapping(mapping);
         }
 

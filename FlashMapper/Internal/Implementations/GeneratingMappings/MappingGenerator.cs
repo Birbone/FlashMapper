@@ -9,18 +9,21 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
     {
         private readonly IMappingExpressionAutocompleteService mappingExpressionAutocompleteService;
         private readonly IExpressionCompiler expressionCompiler;
+        private readonly IFlashMapperSettings settings;
 
-        public MappingGenerator(IMappingExpressionAutocompleteService mappingExpressionAutocompleteService, IExpressionCompiler expressionCompiler)
+        public MappingGenerator(IMappingExpressionAutocompleteService mappingExpressionAutocompleteService,
+            IExpressionCompiler expressionCompiler, 
+            IFlashMapperSettings settings)
         {
             this.mappingExpressionAutocompleteService = mappingExpressionAutocompleteService;
             this.expressionCompiler = expressionCompiler;
+            this.settings = settings;
         }
         
-        public Mapping<TSource, TDestination> GenerateCompleteMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> userInput,
-            IFlashMapperSettings settings)
+        public Mapping<TSource, TDestination> GenerateCompleteMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> userInput)
         {
-            var buildExpression = mappingExpressionAutocompleteService.CompleteBuildExpression(userInput, settings);
-            var mapDataExpression = mappingExpressionAutocompleteService.CompleteMapDataExpression(userInput, settings);
+            var buildExpression = mappingExpressionAutocompleteService.CompleteBuildExpression(userInput);
+            var mapDataExpression = mappingExpressionAutocompleteService.CompleteMapDataExpression(userInput);
             var buildMethod = expressionCompiler.Compile(buildExpression);
             var mapDataMethod = expressionCompiler.Compile(mapDataExpression);
             return new Mapping<TSource, TDestination>(buildMethod, mapDataMethod, settings);

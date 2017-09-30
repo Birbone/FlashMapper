@@ -6,10 +6,17 @@ namespace FlashMapper.Internal.Implementations.MatchingProperties
 {
     public class IgnoreCasePropertyNameComparer : IIgnoreCasePropertyNameComparer
     {
-        public PropertyNameCompareRank Compare(string sourceName, string destinationName, IFlashMapperSettings modelMapperSettings)
+        private readonly IFlashMapperSettings settings;
+
+        public IgnoreCasePropertyNameComparer(IFlashMapperSettings settings)
         {
-            var sourceNamingConvention = modelMapperSettings.NamingConventions.Source.NamingConventionType;
-            var destinationNamingConvention = modelMapperSettings.NamingConventions.Destination.NamingConventionType;
+            this.settings = settings;
+        }
+
+        public PropertyNameCompareRank Compare(string sourceName, string destinationName)
+        {
+            var sourceNamingConvention = settings.NamingConventions.Source.NamingConventionType;
+            var destinationNamingConvention = settings.NamingConventions.Destination.NamingConventionType;
 
             if (!NamingConventionType.CaseInsensitive.In(sourceNamingConvention, destinationNamingConvention))
                 return PropertyNameCompareRank.DoNotMatch;
