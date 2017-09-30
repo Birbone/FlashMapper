@@ -1,8 +1,4 @@
-﻿using System.Linq;
-using System.Linq.Expressions;
-using System.Text.RegularExpressions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FlashMapper.Models;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FlashMapper.Tests.Data;
 using FlashMapper.Tests.Models;
 
@@ -16,13 +12,13 @@ namespace FlashMapper.Tests
         public void MapSimpleModel()
         {
             var mapperConfiguration = new MappingConfiguration();
-            
+
             mapperConfiguration.CreateMapping<Person, PersonReportModel>(p => new PersonReportModel
             {
                 Name = $"{p.FirstName} {p.LastName}",
                 Age = TestHelpers.CalculateAge(p.BirthDate),
             });
-            
+
             var reportModel = mapperConfiguration.Convert<Person, PersonReportModel>(TestData.People.JohnSmith);
             CheckPersonReportModel(TestData.People.JohnSmith, reportModel);
 

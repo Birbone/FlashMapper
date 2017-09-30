@@ -54,9 +54,9 @@ namespace FlashMapper
             var flashMapperCustomServiceBuilderFactory = dependencyResolver
                 .GetService<IFlashMapperCustomServiceBuilderFactory>();
             var customSettings = ResolveCustomSettings(settings, dependencyResolver);
-            var flashMapperCustomServiceBuilder = flashMapperCustomServiceBuilderFactory.Create()
-                .RegisterService(r => customSettings);
+            var flashMapperCustomServiceBuilder = flashMapperCustomServiceBuilderFactory.Create();
             var resolver = customServicesRegistration(flashMapperCustomServiceBuilder)
+                .RegisterService(r => customSettings)
                 .GetResultDependencyResolver();
             CreateMapping(mappingExpression, resolver);
         }

@@ -12,8 +12,8 @@ namespace FlashMapper.Internal.Utils
             var resultCollisionBehavior = customSettings.CollisionBehavior == SelectSourceCollisionBehavior.Inherit
                 ? defaultSettings.CollisionBehavior
                 : customSettings.CollisionBehavior;
-            var resultSourceNamingConvension = customSettings.NamingConventions.Source ?? defaultSettings.NamingConventions.Source;
-            var resultDestinationNamingConvension = customSettings.NamingConventions.Destination ?? defaultSettings.NamingConventions.Destination;
+            var resultSourceNamingConvension = customSettings.NamingConventions?.Source ?? defaultSettings.NamingConventions.Source;
+            var resultDestinationNamingConvension = customSettings.NamingConventions?.Destination ?? defaultSettings.NamingConventions.Destination;
 
             return new FlashMapperSettings(resultUnresolvedBehavior, resultCollisionBehavior,
                 new MapNamingConventionSettings(resultSourceNamingConvension, resultDestinationNamingConvension));

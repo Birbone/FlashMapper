@@ -71,8 +71,7 @@ namespace FlashMapper.Internal
             }.Union(r.GetServices<ICustomIgnoreNodeChecker>())));
             result.RegisterService<IImplicitIgnoreNodeChecker>(r => new ImplicitIgnoreNodeChecker());
             result.RegisterService<IExplicitIgnoreNodeChecker>(r => new ExplicitIgnoreNodeChecker(r.GetService<IImplicitIgnoreNodeChecker>()));
-            result.RegisterService<IDefaultFlashMapperSettingsProvider>(r => new DefaultFlashMapperSettingsProvider(r.GetService<IFlashMapperSettingsBuilderFactory>()));
-            result.RegisterService<IFlashMapperSettings>(r => r.GetService<IDefaultFlashMapperSettingsProvider>().GetDefaultSettings());
+            result.RegisterService<IFlashMapperSettings>(r => new DefaultFlashMapperSettings());
             result.RegisterService<IFlashMapperSettingsBuilderFactory>(r => new FlashMapperSettingsBuilderFactory());
             result.RegisterService<IPropertyPrefixLocator>(r => new PropertyPrefixLocator());
             result.RegisterService<IMappingsStorageFactory>(r => new MappingsStorageFactory());

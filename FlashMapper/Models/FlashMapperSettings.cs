@@ -1,6 +1,6 @@
 namespace FlashMapper.Models
 {
-    public class FlashMapperSettings: IFlashMapperSettings
+    internal class FlashMapperSettings: IFlashMapperSettings
     {
         public FlashMapperSettings(UnresolvedPropertyBehavior unresolvedBehavior,
             SelectSourceCollisionBehavior collisionBehavior, 
