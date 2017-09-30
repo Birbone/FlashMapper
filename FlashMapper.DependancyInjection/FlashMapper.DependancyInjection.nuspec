@@ -2,17 +2,19 @@
 <package >
   <metadata>
     <id>FlashMapper.DependancyInjection</id>
-    <version>1.0.1-beta2</version>
+    <version>1.0.1</version>
     <title>FlashMapper.DependancyInjection</title>
     <authors>Ilya Tiunov</authors>
     <owners>Ilya Tiunov</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>IoC pattern for FlashMapper.</description>
-    <releaseNotes>Resolve additional parameters.</releaseNotes>
+    <releaseNotes>
+      Resolve additional parameters.
+    </releaseNotes>
     <copyright>Copyright 2017</copyright>
     <tags>convert map data flashmapper ioc</tags>
     <dependencies>
-      <dependency id="FlashMapper" version="1.0.1" />
+      <dependency id="FlashMapper" version="1.0.2" />
       <dependency id="FlashMapper.MultiSource" version="1.0.1" />
     </dependencies>
   </metadata>

@@ -2,14 +2,14 @@
 <package >
   <metadata>
     <id>FlashMapper</id>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
     <authors>Ilya Tiunov</authors>
     <owners>Ilya Tiunov</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Extension that allows you to specify relations between two models and then use it to convert from one to another.</description>
+    <description>Library that allows you to specify relations between two data models and then use it to convert from one to another.</description>
     <releaseNotes>
-      1. First stable release. 
-      2. Dependant configurations.</releaseNotes>
+      Minor fixes
+    </releaseNotes>
     <tags>convert map data mapper flashmapper</tags>
     <dependencies />
   </metadata>
