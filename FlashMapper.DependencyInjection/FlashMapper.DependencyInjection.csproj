@@ -22,10 +22,6 @@ Net standard</PackageReleaseNotes>
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IFlashMapperBuilderConfigurator.cs</LastGenOutput>
     </None>
-    <None Update="MappingExpressionStorage.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>MappingExpressionStorage.cs</LastGenOutput>
-    </None>
     <None Update="FlashMapperBuilder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FlashMapperBuilder.cs</LastGenOutput>
@@ -71,11 +67,6 @@ Net standard</PackageReleaseNotes>
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>IFlashMapperBuilderConfigurator.tt</DependentUpon>
-	  </Compile>
-	  <Compile Update="MappingExpressionStorage.cs">
-	    <DesignTime>True</DesignTime>
-	    <AutoGen>True</AutoGen>
-	    <DependentUpon>MappingExpressionStorage.tt</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 </Project>

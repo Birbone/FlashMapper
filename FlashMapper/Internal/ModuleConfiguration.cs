@@ -74,11 +74,15 @@ namespace FlashMapper.Internal
             result.RegisterService<IImplicitIgnoreNodeChecker>(r => new ImplicitIgnoreNodeChecker());
             result.RegisterService<IExplicitIgnoreNodeChecker>(r => new ExplicitIgnoreNodeChecker(r.GetService<IImplicitIgnoreNodeChecker>()));
             result.RegisterService<IFlashMapperSettings>(r => new DefaultFlashMapperSettings());
+#pragma warning disable 612
             result.RegisterService<IFlashMapperSettingsBuilderFactory>(r => new FlashMapperSettingsBuilderFactory());
+#pragma warning restore 612
             result.RegisterService<IPropertyPrefixLocator>(r => new PropertyPrefixLocator());
             result.RegisterService<IMappingsStorageFactory>(r => new MappingsStorageFactory());
             result.RegisterService<IFlashMapperSettingsExtender>(r => new FlashMapperSettingsExtender());
+#pragma warning disable 612
             result.RegisterService<IFlashMapperCustomServiceBuilderFactory>(r => new FlashMapperCustomServiceBuilderFactory(r));
+#pragma warning restore 612
             result.RegisterService<IExpressionCompiler>(r => new ExpressionCompiler());
             return result;
         }

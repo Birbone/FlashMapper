@@ -1,5 +1,8 @@
+using System;
+
 namespace FlashMapper.Internal.Utils
 {
+    [Obsolete]
     public class FlashMapperCustomServiceBuilderFactory : IFlashMapperCustomServiceBuilderFactory
     {
         private readonly IFlashMapperDependencyResolver dependencyResolver;

@@ -55,6 +55,7 @@ namespace FlashMapper
             CreateMapping(mappingExpression, resolver, configurator.GetMappingCallbacks());
         }
         
+        [Obsolete]
         public void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, 
             Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings, 
             Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder> customServicesRegistration)
@@ -69,6 +70,7 @@ namespace FlashMapper
             CreateMapping(mappingExpression, resolver, new FlashMapperMappingCallbacks<TSource, TDestination>(null, null));
         }
 
+        [Obsolete]
         private IFlashMapperSettings ResolveCustomSettings(Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings,
             IFlashMapperDependencyResolver resolver)
         {

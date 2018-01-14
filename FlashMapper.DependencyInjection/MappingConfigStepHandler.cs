@@ -12,7 +12,7 @@ namespace FlashMapper.DependencyInjection
         {
             this.specificHandlers = specificHandlers;
         }
-
+        
         public void ProcessStep<TBuilder>(IMappingConfigStep step, TBuilder builder, IMappingConfiguration currentMappingConfiguration, IMappingConfiguration previousMappingConfiguration)
         {
             if (!specificHandlers.Any(h => h.TryProcessStep(step, builder, currentMappingConfiguration, previousMappingConfiguration)))

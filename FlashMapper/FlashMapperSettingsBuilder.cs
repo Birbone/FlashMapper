@@ -1,7 +1,9 @@
+using System;
 using FlashMapper.Models;
 
 namespace FlashMapper
 {
+    [Obsolete]
     public class FlashMapperSettingsBuilder : IFlashMapperSettingsBuilder
     {
         private UnresolvedPropertyBehavior unresolvedPropertyBehavior;

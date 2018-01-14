@@ -26,8 +26,7 @@ namespace FlashMapper.DependencyInjection
 
         public bool TryProcessStep<TBuilder>(IMappingConfigStep step, TBuilder builder, IMappingConfiguration currentMappingConfiguration, IMappingConfiguration previousMappingConfiguration)
         {
-            var resolveExtraParameterStep = step as ResolveExtraParameterStep;
-            if (resolveExtraParameterStep == null)
+            if (!(step is ResolveExtraParameterStep resolveExtraParameterStep))
                 return false;
             var methodParameters = resolveExtraParameterStep.ResolveParameterExpression.Parameters
                 .Select(p => Expression.Parameter(p.Type, p.Name))

@@ -5,6 +5,7 @@ using FlashMapper.Services;
 
 namespace FlashMapper
 {
+    [Obsolete]
     public class FlashMapperCustomServiceBuilder : IFlashMapperCustomServiceBuilder
     {
         private readonly FlashMapperDependencyResolver dependencyResolver;
