@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B4CC5C82-F316-49C1-BD0C-EA1397868D1F}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>FlashMapper.TestsHost</RootNamespace>
+    <AssemblyName>FlashMapper.TestsHost</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FlashMapper.DependancyInjection\FlashMapper.DependancyInjection.csproj">
+      <Project>{6025c55b-79e9-47e4-be4f-4f02b6cf8852}</Project>
+      <Name>FlashMapper.DependancyInjection</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlashMapper.MultiSource\FlashMapper.MultiSource.csproj">
+      <Project>{d8d736d0-2925-4631-bbd3-4d8feef71328}</Project>
+      <Name>FlashMapper.MultiSource</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlashMapper.PerformanceTests\FlashMapper.PerformanceTests.csproj">
+      <Project>{9e050f93-d693-4e83-8077-af471c191393}</Project>
+      <Name>FlashMapper.PerformanceTests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlashMapper.Tests\FlashMapper.Tests.csproj">
+      <Project>{1f2ad34c-c28a-45cb-a716-d6712d35b936}</Project>
+      <Name>FlashMapper.Tests</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FlashMapper\FlashMapper.csproj">
+      <Project>{fa66e867-d481-4313-9af0-aeb4e03d3ab2}</Project>
+      <Name>FlashMapper</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

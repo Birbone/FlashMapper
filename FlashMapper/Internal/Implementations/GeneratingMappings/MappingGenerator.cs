@@ -20,10 +20,10 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
             this.settings = settings;
         }
         
-        public Mapping<TSource, TDestination> GenerateCompleteMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> userInput)
+        public Mapping<TSource, TDestination> GenerateCompleteMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> userInput, IFlashMapperMappingCallbacks<TSource, TDestination> callbacks)
         {
-            var buildExpression = mappingExpressionAutocompleteService.CompleteBuildExpression(userInput);
-            var mapDataExpression = mappingExpressionAutocompleteService.CompleteMapDataExpression(userInput);
+            var buildExpression = mappingExpressionAutocompleteService.CompleteBuildExpression(userInput, callbacks);
+            var mapDataExpression = mappingExpressionAutocompleteService.CompleteMapDataExpression(userInput, callbacks);
             var buildMethod = expressionCompiler.Compile(buildExpression);
             var mapDataMethod = expressionCompiler.Compile(mapDataExpression);
             return new Mapping<TSource, TDestination>(buildMethod, mapDataMethod, settings);

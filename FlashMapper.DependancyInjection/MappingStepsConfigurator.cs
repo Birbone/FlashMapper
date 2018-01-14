@@ -11,7 +11,7 @@ namespace FlashMapper.DependancyInjection
             this.mappingConfigStepHandler = mappingConfigStepHandler;
         }
 
-        public void ProcessSteps<TBuilder>(List<IMappingConfigStep> steps, IMappingConfiguration mappingConfiguration, TBuilder builder, DeferredFlashMapperSettingsBuilder settingsBuilder)
+        public void ProcessSteps<TBuilder>(List<IMappingConfigStep> steps, IMappingConfiguration mappingConfiguration, TBuilder builder)
         {
             if (steps.Count == 0)
                 return;
@@ -22,11 +22,11 @@ namespace FlashMapper.DependancyInjection
             var stepsStack = new Stack<IMappingConfigStep>(steps);
             var firstStep = stepsStack.Pop();
             var internalConfiguration = stepsStack.Count == 0 ? null : mappingConfiguration.CreateDependantConfiguration();
-            mappingConfigStepHandler.ProcessStep(firstStep, builder, mappingConfiguration, internalConfiguration, settingsBuilder);
+            mappingConfigStepHandler.ProcessStep(firstStep, builder, mappingConfiguration, internalConfiguration);
             while (stepsStack.Count > 0)
             {
                 var currentStep = stepsStack.Pop();
-                mappingConfigStepHandler.ProcessStep(currentStep, builder, internalConfiguration, internalConfiguration, settingsBuilder);
+                mappingConfigStepHandler.ProcessStep(currentStep, builder, internalConfiguration, internalConfiguration);
             }
         }
     }

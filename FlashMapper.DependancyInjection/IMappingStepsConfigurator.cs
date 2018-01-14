@@ -4,6 +4,6 @@ namespace FlashMapper.DependancyInjection
 {
     internal interface IMappingStepsConfigurator
     {
-        void ProcessSteps<TBuilder>(List<IMappingConfigStep> steps, IMappingConfiguration mappingConfiguration, TBuilder builder, DeferredFlashMapperSettingsBuilder settingsBuilder);
+        void ProcessSteps<TBuilder>(List<IMappingConfigStep> steps, IMappingConfiguration mappingConfiguration, TBuilder builder);
     }
 }

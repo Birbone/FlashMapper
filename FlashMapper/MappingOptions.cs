@@ -14,7 +14,7 @@ namespace FlashMapper
         /// <typeparam name="TResult"></typeparam>
         public static TResult Ignore<TResult>()
         {
-            throw new Exception("This method is not supposed to be called.");
+            throw MethodCallException();
         }
 
         /// <summary>
@@ -23,6 +23,16 @@ namespace FlashMapper
         public static IgnoreObject Ignore()
         {
             return new IgnoreObject();
+        }
+
+        public static bool IsConstruction()
+        {
+            throw MethodCallException();
+        }
+
+        private static Exception MethodCallException()
+        {
+            return new Exception("This method is not supposed to be called.");
         }
     }
 }

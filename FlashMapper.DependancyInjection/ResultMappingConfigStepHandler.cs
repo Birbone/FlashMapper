@@ -15,24 +15,17 @@ namespace FlashMapper.DependancyInjection
                 inputExpression.Parameters.With(builderParameter));
         }
 
-        public bool TryProcessStep<TBuilder>(IMappingConfigStep step, 
-            TBuilder builder,
-            IMappingConfiguration currentMappingConfiguration, 
-            IMappingConfiguration previousMappingConfiguration,
-            DeferredFlashMapperSettingsBuilder settingsBuilder)
+        public bool TryProcessStep<TBuilder>(IMappingConfigStep step, TBuilder builder, IMappingConfiguration currentMappingConfiguration, IMappingConfiguration previousMappingConfiguration)
         {
             var resultMappingConfigStep = step as ResultMappingConfigStep;
             if (resultMappingConfigStep == null)
                 return false;
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings = settingsBuilder.Initialize;
-            Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder> customServicesRegistration = c => c;
             var staticResultExpression = MakeExpressionStatic(resultMappingConfigStep.ResultExpression, builder);
             resultMappingConfigStep.CreateMappingMethod.Invoke(null, new object[]
             {
                 currentMappingConfiguration,
                 staticResultExpression,
-                settings,
-                customServicesRegistration
+                resultMappingConfigStep.SettingsInitializeDelegate
             });
             return true;
         }

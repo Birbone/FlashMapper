@@ -35,11 +35,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TDestination> configurator);
@@ -67,11 +66,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TDestination> configurator);
@@ -99,11 +97,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TDestination> configurator);
@@ -131,11 +128,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TDestination> configurator);
@@ -163,11 +159,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination> configurator);
@@ -195,11 +190,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination> configurator);
@@ -227,11 +221,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination> configurator);
@@ -259,11 +252,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination> configurator);
@@ -291,11 +283,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination> configurator);
@@ -323,11 +314,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination> configurator);
@@ -355,11 +345,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination> configurator);
@@ -387,11 +376,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination> configurator);
@@ -419,11 +407,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination> configurator);
@@ -451,11 +438,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination> configurator);

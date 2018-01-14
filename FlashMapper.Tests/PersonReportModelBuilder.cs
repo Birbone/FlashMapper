@@ -1,3 +1,4 @@
+using System;
 using FlashMapper.DependancyInjection;
 using FlashMapper.Tests.Models;
 

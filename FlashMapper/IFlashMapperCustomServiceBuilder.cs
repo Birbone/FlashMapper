@@ -21,4 +21,17 @@ namespace FlashMapper
         /// <returns></returns>
         IFlashMapperDependencyResolver GetResultDependencyResolver();
     }
+
+    public interface IFlashMapperCustomServiceBuilder<out TConfigurator>
+        where TConfigurator: IFlashMapperCustomServiceBuilder<TConfigurator>
+    {
+        /// <summary>
+        /// Allows you to register you own implementation of any internal service
+        /// </summary>
+        /// <typeparam name="TService">Service type like <see cref="IUserInputParser"/></typeparam>
+        /// <param name="serviceRegistration">Service factory method. You can use dependancy resolver to obtain other services</param>
+        /// <returns>Self</returns>
+        TConfigurator RegisterService<TService>(
+            Func<IFlashMapperDependencyResolver, TService> serviceRegistration) where TService : class, IFlashMapperService;
+    }
 }

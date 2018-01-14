@@ -55,11 +55,10 @@ namespace FlashMapper
 
         public void RegisterMapping()
         {
-            var settingsBuilder = new DeferredFlashMapperSettingsBuilder();
-            var context = new FlashMapperBuilderConfiguratorContext(settingsBuilder);
-            var configurator = new FlashMapperBuilderConfigurator<<#= sourcesTypesString #>, TDestination, TFlashMapperBuilder>(context);
+            var context = new FlashMapperBuilderConfiguratorContext();
+            var configurator = new FlashMapperBuilderConfigurator<<#= sourcesTypesString #>, TDestination, TFlashMapperBuilder>(context, (TFlashMapperBuilder)this);
             ConfigureMapping(configurator);
-			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this, settingsBuilder);
+			ModuleConfiguration.MappingStepsConfigurator.ProcessSteps(context.Steps, mappingConfiguration, (TFlashMapperBuilder)this);
         }
 
         protected abstract void ConfigureMapping(IFlashMapperBuilderConfigurator<<#= sourcesTypesString #>, TDestination> configurator);

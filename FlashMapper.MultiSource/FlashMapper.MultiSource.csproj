@@ -32,6 +32,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FlashMapperMappingConfigurator.cs">
+      <DependentUpon>FlashMapperMappingConfigurator.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="IFlashMapperMappingConfigurator.cs">
+      <DependentUpon>IFlashMapperMappingConfigurator.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="IInternalMultiSourceMappingExpressionConverter.cs" />
+    <Compile Include="IFlashMapperMappingCallbacksBuilder.cs">
+      <DependentUpon>IFlashMapperMappingCallbacksBuilder.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="InternalMultiSourceMappingExpressionConverter.cs" />
     <Compile Include="FlashMapperGenericConverter.cs">
       <AutoGen>True</AutoGen>
@@ -102,6 +118,24 @@
       <Project>{fa66e867-d481-4313-9af0-aeb4e03d3ab2}</Project>
       <Name>FlashMapper</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IFlashMapperMappingCallbacksBuilder.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IFlashMapperMappingCallbacksBuilder.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="IFlashMapperMappingConfigurator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>IFlashMapperMappingConfigurator.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="FlashMapperMappingConfigurator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FlashMapperMappingConfigurator.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

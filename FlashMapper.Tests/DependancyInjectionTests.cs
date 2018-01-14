@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq.Expressions;
-using FlashMapper.Models;
-using FlashMapper.Services.GeneratingMappings;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FlashMapper.Tests.Data;
 using FlashMapper.Tests.Models;
 

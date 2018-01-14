@@ -19,6 +19,7 @@
 
 using System;
 using System.Linq.Expressions;
+using FlashMapper.MultiSource;
 
 namespace FlashMapper.DependancyInjection
 {
@@ -38,7 +39,7 @@ namespace FlashMapper.DependancyInjection
 <#
 	}
 #>
-        IFlashMapperSettingsBuilder CreateMapping(Expression<Func<<#= sourcesTypesString #>, TDestination>> mappingExpression);
+        IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TDestination> CreateMapping(Expression<Func<<#= sourcesTypesString #>, TDestination>> mappingExpression);
     }
 
 <#  } #>

@@ -23,7 +23,7 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
             this.mapExpressionPostProcessor = mapExpressionPostProcessor;
         }
         
-        public Expression<Func<TSource, TDestination>> CompleteBuildExpression<TSource, TDestination>(Expression<Func<TSource, TDestination>> inputExpression)
+        public Expression<Func<TSource, TDestination>> CompleteBuildExpression<TSource, TDestination>(Expression<Func<TSource, TDestination>> inputExpression, IFlashMapperMappingCallbacks<TSource, TDestination> callbacks)
         {
             var destinationType = typeof(TDestination);
             var source = inputExpression.Parameters[0];
@@ -34,27 +34,41 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
             {
                 assignDestination
             };
+            actions.Add(GetDelegateInvocationExpression(callbacks.BeforeMapCallback, source, destination));
             actions.AddRange(GetPropertyAssigns<TSource, TDestination>(source, destination, userInputParts.Bindings));
+            actions.Add(GetDelegateInvocationExpression(callbacks.AfterMapCallback, source, destination));
             actions.Add(destination);
             var methodBody = Expression.Block(new[] {destination}, actions);
             var processedBody = mapExpressionPostProcessor.Process(methodBody);
             var resultLambda = Expression.Lambda<Func<TSource, TDestination>>(processedBody, source);
             return resultLambda;
         }
-
-
-        public Expression<Action<TSource, TDestination>> CompleteMapDataExpression<TSource, TDestination>(Expression<Func<TSource, TDestination>> inputExpression)
+        
+        public Expression<Action<TSource, TDestination>> CompleteMapDataExpression<TSource, TDestination>(Expression<Func<TSource, TDestination>> inputExpression, IFlashMapperMappingCallbacks<TSource, TDestination> callbacks)
         {
             var destinationType = typeof(TDestination);
             var source = inputExpression.Parameters[0];
             var destination = Expression.Parameter(destinationType);
             var userInputParts = userInputParser.GetUserInputParts(inputExpression.Body);
-            var methodBody = Expression.Block(GetPropertyAssigns<TSource, TDestination>(source, destination, userInputParts.Bindings));
+            var actions = new List<Expression>();
+            actions.Add(GetDelegateInvocationExpression(callbacks.BeforeMapCallback, source, destination));
+            actions.AddRange(GetPropertyAssigns<TSource, TDestination>(source, destination, userInputParts.Bindings));
+            actions.Add(GetDelegateInvocationExpression(callbacks.AfterMapCallback, source, destination));
+            var methodBody = Expression.Block(actions);
             var processedBody = mapExpressionPostProcessor.Process(methodBody);
             var resultLambda = Expression.Lambda<Action<TSource, TDestination>>(processedBody, source, destination);
             return resultLambda;
         }
-        
+
+        private Expression GetDelegateInvocationExpression(Delegate @delegate, params Expression[] arguments)
+        {
+            if (@delegate == null)
+                return Expression.Empty();
+            if (@delegate.Target == null)
+                return Expression.Call(@delegate.Method, arguments);
+            return Expression.Call(Expression.Constant(@delegate.Target), @delegate.Method, arguments);
+        }
+
         private IEnumerable<Expression> GetPropertyAssigns<TSource, TDestination>(ParameterExpression source, 
             ParameterExpression destination, 
             MemberBinding[] userInputBindings)

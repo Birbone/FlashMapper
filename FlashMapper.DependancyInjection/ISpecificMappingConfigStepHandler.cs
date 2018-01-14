@@ -5,7 +5,6 @@ namespace FlashMapper.DependancyInjection
         bool TryProcessStep<TBuilder>(IMappingConfigStep step, 
             TBuilder builder, 
             IMappingConfiguration currentMappingConfiguration, 
-            IMappingConfiguration previousMappingConfiguration, 
-            DeferredFlashMapperSettingsBuilder settingsBuilder);
+            IMappingConfiguration previousMappingConfiguration);
     }
 }

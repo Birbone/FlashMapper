@@ -40,7 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DeferredFlashMapperMappingConfiguratorHelpers.cs" />
     <Compile Include="Extensions.cs" />
+    <Compile Include="DeferredFlashMapperMappingConfigurator.cs">
+      <DependentUpon>DeferredFlashMapperMappingConfigurator.tt</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="FlashMapperBuilderConfiguratorContext.cs" />
     <Compile Include="IBuilder.cs">
       <AutoGen>True</AutoGen>
@@ -74,7 +80,7 @@
       <DependentUpon>FlashMapperBuilderConfigurator.tt</DependentUpon>
     </Compile>
     <Compile Include="FlashMapperBuildersRegistrationService.cs" />
-    <Compile Include="DeferredFlashMapperSettingsBuilder.cs" />
+    <Compile Include="DeferredFlashMapperMappingConfiguratorBase.cs" />
     <Compile Include="IFlashMapperBuildersRegistrationService.cs" />
     <Compile Include="IFlashMapperBuilder.cs" />
     <Compile Include="MappingStepsConfigurator.cs" />
@@ -126,6 +132,12 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DeferredFlashMapperMappingConfigurator.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>DeferredFlashMapperMappingConfigurator.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

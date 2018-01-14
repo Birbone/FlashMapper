@@ -6,6 +6,6 @@ namespace FlashMapper.Services.GeneratingMappings
 {
     public interface IMappingGenerator : IFlashMapperService
     {
-        Mapping<TSource, TDestination> GenerateCompleteMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> userInput);
+        Mapping<TSource, TDestination> GenerateCompleteMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> userInput, IFlashMapperMappingCallbacks<TSource, TDestination> callbacks);
     }
 }

@@ -8,7 +8,6 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
 {
     public class ExpressionCompiler : IExpressionCompiler
     {
-
         public TDelegate Compile<TDelegate>(Expression<TDelegate> expression)
         {
             return expression.Compile();

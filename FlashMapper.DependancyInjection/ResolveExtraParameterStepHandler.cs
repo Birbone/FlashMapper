@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Reflection;
 using FlashMapper.Services.GeneratingMappings;
 
 namespace FlashMapper.DependancyInjection
@@ -17,11 +18,13 @@ namespace FlashMapper.DependancyInjection
                 inputExpression.Parameters.With(builderParameter));
         }
 
-        public bool TryProcessStep<TBuilder>(IMappingConfigStep step, 
-            TBuilder builder, 
-            IMappingConfiguration currentMappingConfiguration, 
-            IMappingConfiguration previousMappingConfiguration, 
-            DeferredFlashMapperSettingsBuilder settingsBuilder)
+        private static TConfigurator RegisterCustomAutocompleteService<TConfigurator>(TConfigurator configurator)
+            where TConfigurator : IFlashMapperCustomServiceBuilder<TConfigurator>
+        {
+            return configurator.RegisterService<IMappingExpressionAutocompleteService>(r => new ResolveExtraParameterMappingExpressionAutocompleteService());
+        }
+
+        public bool TryProcessStep<TBuilder>(IMappingConfigStep step, TBuilder builder, IMappingConfiguration currentMappingConfiguration, IMappingConfiguration previousMappingConfiguration)
         {
             var resolveExtraParameterStep = step as ResolveExtraParameterStep;
             if (resolveExtraParameterStep == null)
@@ -60,15 +63,17 @@ namespace FlashMapper.DependancyInjection
             methodActions.Add(result);
             var methodBody = Expression.Block(new[] {newParameter, result}, methodActions);
             var mapExpression = Expression.Lambda(methodBody, methodParameters.With(builderParameter));
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings = settingsBuilder.Initialize;
-            Func<IFlashMapperCustomServiceBuilder, IFlashMapperCustomServiceBuilder> customServicesRegistration = 
-                c => c.RegisterService<IMappingExpressionAutocompleteService>(r => new ResolveExtraParameterMappingExpressionAutocompleteService());
+            var configuratorMethod = GetType()
+                .GetMethod(nameof(RegisterCustomAutocompleteService), BindingFlags.Static | BindingFlags.NonPublic)
+                .MakeGenericMethod(resolveExtraParameterStep.ConfiguratorType);
+            var delegateType = typeof(Func<,>).MakeGenericType(resolveExtraParameterStep.ConfiguratorType,
+                resolveExtraParameterStep.ConfiguratorType);
+            var settingsDelegate = Delegate.CreateDelegate(delegateType, configuratorMethod);
             resolveExtraParameterStep.CreateMappingMethod.Invoke(null, new object[]
             {
                 currentMappingConfiguration,
                 mapExpression,
-                settings,
-                customServicesRegistration
+                settingsDelegate
             });
             return true;
         }

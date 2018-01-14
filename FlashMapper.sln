@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashMapper", "FlashMapper\FlashMapper.csproj", "{FA66E867-D481-4313-9AF0-AEB4E03D3AB2}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashMapper.DependancyInjection", "FlashMapper.DependancyInjection\FlashMapper.DependancyInjection.csproj", "{6025C55B-79E9-47E4-BE4F-4F02B6CF8852}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashMapper.PerformanceTests", "FlashMapper.PerformanceTests\FlashMapper.PerformanceTests.csproj", "{9E050F93-D693-4E83-8077-AF471C191393}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashMapper.TestsHost", "FlashMapper.TestsHost\FlashMapper.TestsHost.csproj", "{B4CC5C82-F316-49C1-BD0C-EA1397868D1F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,8 +41,15 @@ Global
 		{9E050F93-D693-4E83-8077-AF471C191393}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E050F93-D693-4E83-8077-AF471C191393}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E050F93-D693-4E83-8077-AF471C191393}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B4CC5C82-F316-49C1-BD0C-EA1397868D1F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B4CC5C82-F316-49C1-BD0C-EA1397868D1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B4CC5C82-F316-49C1-BD0C-EA1397868D1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B4CC5C82-F316-49C1-BD0C-EA1397868D1F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE5B9F47-89E9-451E-B357-A80C69A5BD5E}
 	EndGlobalSection
 EndGlobal

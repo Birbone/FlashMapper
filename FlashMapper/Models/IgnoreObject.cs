@@ -39,6 +39,11 @@ namespace FlashMapper.Models
             throw MethodCallException();
         }
 
+        public static implicit operator DateTimeOffset(IgnoreObject ignoreObject)
+        {
+            throw MethodCallException();
+        }
+
         public static implicit operator TimeSpan(IgnoreObject ignoreObject)
         {
             throw MethodCallException();

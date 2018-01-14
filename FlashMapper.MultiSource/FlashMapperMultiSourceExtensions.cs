@@ -22,17 +22,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TDestination>> mappingExpression,
@@ -63,17 +73,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TSource3, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TSource3, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TSource3, TDestination>> mappingExpression,
@@ -104,17 +124,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TDestination>> mappingExpression,
@@ -145,17 +175,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TDestination>> mappingExpression,
@@ -186,17 +226,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TDestination>> mappingExpression,
@@ -227,17 +277,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TDestination>> mappingExpression,
@@ -268,17 +328,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TDestination>> mappingExpression,
@@ -309,17 +379,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TDestination>> mappingExpression,
@@ -350,17 +430,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TDestination>> mappingExpression,
@@ -391,17 +481,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TDestination>> mappingExpression,
@@ -432,17 +532,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TDestination>> mappingExpression,
@@ -473,17 +583,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TDestination>> mappingExpression,
@@ -514,17 +634,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TDestination>> mappingExpression,
@@ -555,17 +685,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TSource15, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TSource15, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TSource15, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TSource15, TDestination>, IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TSource15, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TSource15, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TSource15, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TSource15, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<TSource1, TSource2, TSource3, TSource4, TSource5, TSource6, TSource7, TSource8, TSource9, TSource10, TSource11, TSource12, TSource13, TSource14, TSource15, TDestination>> mappingExpression,

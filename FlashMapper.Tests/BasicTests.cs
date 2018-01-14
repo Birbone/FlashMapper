@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FlashMapper.Tests.Data;
 using FlashMapper.Tests.Models;
 
@@ -7,7 +8,6 @@ namespace FlashMapper.Tests
     [TestClass]
     public class BasicTests
     {
-
         [TestMethod]
         public void MapSimpleModel()
         {

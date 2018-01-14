@@ -42,17 +42,27 @@ namespace FlashMapper
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<<#= sourcesTypesString#>, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s, c => c);
+            CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
         public static void CreateMapping<<#= sourcesTypesString#>, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<<#= sourcesTypesString#>, TDestination>> mappingExpression,
-            Func<IFlashMapperSettingsBuilder, IFlashMapperSettingsBuilder> settings)
+            Func<IFlashMapperMappingConfigurator<<#= sourcesTypesString#>, TDestination>, IFlashMapperMappingConfigurator<<#= sourcesTypesString#>, TDestination>> settings)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, settings, c => c);
+		    var converter = new MultiSourceMappingExpressionConverter<<#= sourcesTypesString#>, TDestination>(new InternalMultiSourceMappingExpressionConverter());
+            var singleSourceExpression = converter.Convert(mappingExpression);
+            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            {
+                settings(new FlashMapperMappingConfigurator<<#= sourcesTypesString#>, TDestination>(s))
+                    .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>
+                        new MultiSourceAutomaticPropertyValueExpressionResolver(
+                            r.GetService<IPropertyNameComparer>(), r.GetService<IFlashMapperSettings>()));
+                return s;
+            });
         }
 
+		[Obsolete("Register custom services in settings.")]
         public static void CreateMapping<<#= sourcesTypesString#>, TDestination>(
             this IMappingConfiguration mappingConfiguration,
             Expression<Func<<#= sourcesTypesString#>, TDestination>> mappingExpression,

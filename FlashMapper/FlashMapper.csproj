@@ -47,11 +47,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IFlashMapperGenericConverter.cs" />
+    <Compile Include="IFlashMapperMappingCallbacksBuilder.cs" />
+    <Compile Include="IFlashMapperMappingConfigurator.cs" />
     <Compile Include="Internal\Utils\IFlashMapperDependencyResolver.cs" />
     <Compile Include="FlashMapperExtensions.cs" />
     <Compile Include="FlashMapperGenericConverter.cs" />
     <Compile Include="Internal\Implementations\GeneratingMappings\ExpressionCompiler.cs" />
     <Compile Include="Models\DefaultFlashMapperSettings.cs" />
+    <Compile Include="Models\FlashMapperMappingCallbacks.cs" />
+    <Compile Include="Models\IFlashMapperMappingCallbacks.cs" />
     <Compile Include="Services\GeneratingMappings\IExpressionCompiler.cs" />
     <Compile Include="Services\IFlashMapperService.cs" />
     <Compile Include="Internal\Implementations\GeneratingMappings\AutomaticPropertyValueExpressionResolver.cs" />
@@ -88,7 +92,6 @@
     <Compile Include="Internal\Utils\IFlashMapperCustomServiceBuilderFactory.cs" />
     <Compile Include="Internal\Utils\FlashMapperCustomServiceBuilderFactory.cs" />
     <Compile Include="SelectSourceCollisionBehavior.cs" />
-    <Compile Include="Internal\Implementations\Settings\DefaultFlashMapperSettingsProvider.cs" />
     <Compile Include="Internal\Extensions.cs" />
     <Compile Include="Services\MatchingProperties\ICamelCasePropertyNameTokenizerFactory.cs" />
     <Compile Include="Services\ParsingUserInput\IPropertyAssignPostProcessor.cs" />
@@ -96,7 +99,6 @@
     <Compile Include="Services\ParsingUserInput\ISpecificPropertyAssignMapExpressionBuilderFactory.cs" />
     <Compile Include="Internal\Implementations\ParsingUserInput\PropertyAssignPostProcessor.cs" />
     <Compile Include="Internal\Implementations\ParsingUserInput\PropertyAssignPostProcessorVisitor.cs" />
-    <Compile Include="Services\Settings\IDefaultFlashMapperSettingsProvider.cs" />
     <Compile Include="Internal\Implementations\MatchingProperties\IgnoreCasePropertyNameComparer.cs" />
     <Compile Include="Models\IgnoreObject.cs" />
     <Compile Include="Services\ParsingUserInput\IMapExpressionPostProcessor.cs" />
