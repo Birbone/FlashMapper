@@ -1,1 +1,0 @@
-..\nuget pack FlashMapper.MultiSource.csproj -OutputDirectory nuget\ -Prop Configuration=Release -Build

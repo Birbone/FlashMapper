@@ -1,1 +1,0 @@
-..\nuget pack FlashMapper.csproj -OutputDirectory nuget\ -Prop Configuration=Release -Build

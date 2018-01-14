@@ -7,7 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-
 namespace FlashMapper.MultiSource
 {
     public class FlashMapperGenericConverter<TSource1, TSource2> : IFlashMapperGenericConverter

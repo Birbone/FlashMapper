@@ -80,7 +80,6 @@ namespace FlashMapper.MultiSource
             return this;
         }
     }
-
     public class FlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TDestination> : IFlashMapperMappingConfigurator<TSource1, TSource2, TSource3, TDestination>
     {
         private readonly IFlashMapperMappingConfigurator<FlashMapperMultiSourceWrap<TSource1, TSource2, TSource3>, TDestination> internalConfigurator;
