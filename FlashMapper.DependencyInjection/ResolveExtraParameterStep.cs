@@ -1,4 +1,3 @@
-using System;
 using System.Linq.Expressions;
 using System.Reflection;
 
@@ -10,19 +9,19 @@ namespace FlashMapper.DependencyInjection
             MethodInfo nextStepConvertMethod, 
             MethodInfo nextStepMapMethod, 
             MethodInfo createMappingMethod, 
-            Type configuratorType)
+            IServiceRegistrationHelper serviceRegistrationHelper)
         {
             ResolveParameterExpression = resolveParameterExpression;
             NextStepConvertMethod = nextStepConvertMethod;
             NextStepMapMethod = nextStepMapMethod;
             CreateMappingMethod = createMappingMethod;
-            ConfiguratorType = configuratorType;
+            ServiceRegistrationHelper = serviceRegistrationHelper;
         }
 
         public LambdaExpression ResolveParameterExpression { get; }
         public MethodInfo NextStepConvertMethod { get; }
         public MethodInfo NextStepMapMethod { get; }
         public MethodInfo CreateMappingMethod { get; }
-        public Type ConfiguratorType { get; }
+        public IServiceRegistrationHelper ServiceRegistrationHelper { get; }
     }
 }

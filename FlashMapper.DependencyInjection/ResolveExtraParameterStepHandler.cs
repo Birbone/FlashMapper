@@ -18,12 +18,6 @@ namespace FlashMapper.DependencyInjection
                 inputExpression.Parameters.With(builderParameter));
         }
 
-        private static TConfigurator RegisterCustomAutocompleteService<TConfigurator>(TConfigurator configurator)
-            where TConfigurator : IFlashMapperCustomServiceBuilder<TConfigurator>
-        {
-            return configurator.RegisterService<IMappingExpressionAutocompleteService>(r => new ResolveExtraParameterMappingExpressionAutocompleteService());
-        }
-
         public bool TryProcessStep<TBuilder>(IMappingConfigStep step, TBuilder builder, IMappingConfiguration currentMappingConfiguration, IMappingConfiguration previousMappingConfiguration)
         {
             if (!(step is ResolveExtraParameterStep resolveExtraParameterStep))
@@ -62,17 +56,12 @@ namespace FlashMapper.DependencyInjection
             methodActions.Add(result);
             var methodBody = Expression.Block(new[] {newParameter, result}, methodActions);
             var mapExpression = Expression.Lambda(methodBody, methodParameters.With(builderParameter));
-            var configuratorMethod = GetType()
-                .GetMethod(nameof(RegisterCustomAutocompleteService), BindingFlags.Static | BindingFlags.NonPublic)
-                .MakeGenericMethod(resolveExtraParameterStep.ConfiguratorType);
-            var delegateType = typeof(Func<,>).MakeGenericType(resolveExtraParameterStep.ConfiguratorType,
-                resolveExtraParameterStep.ConfiguratorType);
-            var settingsDelegate = Delegate.CreateDelegate(delegateType, configuratorMethod);
+            resolveExtraParameterStep.ServiceRegistrationHelper.RegisterService<IMappingExpressionAutocompleteService>(r => new ResolveExtraParameterMappingExpressionAutocompleteService());
             resolveExtraParameterStep.CreateMappingMethod.Invoke(null, new object[]
             {
                 currentMappingConfiguration,
                 mapExpression,
-                settingsDelegate
+                resolveExtraParameterStep.ServiceRegistrationHelper.GetInitializationDelegate()
             });
             return true;
         }

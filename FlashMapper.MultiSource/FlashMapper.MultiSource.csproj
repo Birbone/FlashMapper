@@ -10,6 +10,9 @@
         <PackageTags>convert map data flashmapper multisource</PackageTags>
         <PackageReleaseNotes>Map events
 Net Standard</PackageReleaseNotes>
+        <PackageProjectUrl>https://github.com/Birbone/FlashMapper</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Birbone/FlashMapper</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
     <ItemGroup>
       <ProjectReference Include="..\FlashMapper\FlashMapper.csproj" />

@@ -48,7 +48,8 @@ namespace FlashMapper.DependencyInjection
 		    Action<IMappingConfiguration, Expression<Func<<#= sourcesTypesString #>, TBuilder, TDestination>>, Func<IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>, IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
             Func<IMappingConfiguration, <#= sourcesTypesWithNewParameterString #>, TBuilder, TDestination> convertMethod = FlashMapperMultiSourceExtensions.Convert<<#= sourcesTypesWithNewParameterString #>, TBuilder, TDestination>;
 			Action<IMappingConfiguration, <#= sourcesTypesWithNewParameterString #>, TBuilder, TDestination> mapDataMethod = FlashMapperMultiSourceExtensions.MapData;
-			var step = new ResolveExtraParameterStep(resolveParameterMethod, convertMethod.Method, mapDataMethod.Method, createMappingMethod.Method, typeof(IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>));
+			var serviceRegistrationHelper = new ServiceRegistrationHelper<IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>>();
+			var step = new ResolveExtraParameterStep(resolveParameterMethod, convertMethod.Method, mapDataMethod.Method, createMappingMethod.Method, serviceRegistrationHelper);
 			context.Steps.Add(step);
 			return new FlashMapperBuilderConfigurator<<#= sourcesTypesWithNewParameterString #>, TDestination, TBuilder>(context, builder);
 		}

@@ -12,6 +12,9 @@ Net standard</PackageReleaseNotes>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
         <PackageId>FlashMapper.DependencyInjection</PackageId>
         <Product>FlashMapper.DependencyInjection</Product>
+        <PackageProjectUrl>https://github.com/Birbone/FlashMapper</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/Birbone/FlashMapper</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
     </PropertyGroup>
 	<ItemGroup>
     <None Update="IBuilder.tt">

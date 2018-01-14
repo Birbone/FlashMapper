@@ -10,5 +10,8 @@
 		<PackageReleaseNotes>Map events</PackageReleaseNotes>
 		<PackageTags>convert map data mapper flashmapper</PackageTags>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageProjectUrl>https://github.com/Birbone/FlashMapper</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Birbone/FlashMapper</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
     </PropertyGroup>
 </Project>

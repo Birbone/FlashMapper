@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
@@ -11,6 +12,7 @@ namespace FlashMapper.DependencyInjection
     internal abstract class DeferredFlashMapperMappingConfiguratorBase<TConfigurator, TInternalConfigurator> :
         IFlashMapperSettingsBuilder<TConfigurator>, IFlashMapperCustomServiceBuilder<TConfigurator>
         where TConfigurator : IFlashMapperSettingsBuilder<TConfigurator>, IFlashMapperCustomServiceBuilder<TConfigurator>
+        where TInternalConfigurator : IFlashMapperSettingsBuilder<TInternalConfigurator>, IFlashMapperCustomServiceBuilder<TInternalConfigurator>
     {
         private readonly ParameterExpression builderExpressionParameter;
         private Expression builderExpression;
@@ -59,9 +61,26 @@ namespace FlashMapper.DependencyInjection
             return ApplyBuilderMethod(nameof(DestinationNamingConvention), ma(namingConventionType), ma(prefixes));
         }
 
+        private static TInternalConfigurator RegisterServiceInternal<TService>(
+            TInternalConfigurator internalConfigurator,
+            Func<IFlashMapperDependencyResolver, TService> serviceRegistration) where TService : class, IFlashMapperService
+        {
+            return internalConfigurator.RegisterService(serviceRegistration);
+        }
+
         public TConfigurator RegisterService<TService>(Func<IFlashMapperDependencyResolver, TService> serviceRegistration) where TService : class, IFlashMapperService
         {
-            return ApplyBuilderMethod<TService>(nameof(RegisterService), ma(serviceRegistration));
+            Func<TInternalConfigurator, Func<IFlashMapperDependencyResolver, TService>, TInternalConfigurator> method = RegisterServiceInternal;
+            if (internalBuilder == null)
+            {
+                builderExpression = Expression.Call(method.Method, builderExpression,
+                    Expression.Constant(serviceRegistration, typeof(Func<IFlashMapperDependencyResolver, TService>)));
+            }
+            else
+            {
+                method(internalBuilder, serviceRegistration);
+            }
+            return This;
         }
 
         protected class MethodArgument
@@ -94,6 +113,16 @@ namespace FlashMapper.DependencyInjection
 
         protected MethodInfo GetBuilderMethod<TGenericArgument>(string methodName, params Type[] methodArguments)
         {
+            var aa = typeof(TInternalConfigurator).GetMethods()
+                .Union(typeof(TInternalConfigurator).GetInterfaces().SelectMany(i => i.GetMethods()))
+                .ToArray();
+            var bb = aa.Where(m => m.Name == methodName).ToArray();
+            var cc = bb.Where(m => m.IsGenericMethod).ToArray();
+            var dd = cc.Where(m => m.GetGenericArguments().Length == 1).ToArray();
+            var ee = dd.Where(m => m.GetParameters().Length == methodArguments.Length).ToArray();
+            var ff = ee.Where(m => m.GetParameters().Zip(methodArguments, (p, e) => p.ParameterType == e).All(b =>b)).ToArray();
+
+
             return typeof(TInternalConfigurator).GetMethods()
                 .Union(typeof(TInternalConfigurator).GetInterfaces().SelectMany(i => i.GetMethods()))
                 .First(m => m.Name == methodName &&
