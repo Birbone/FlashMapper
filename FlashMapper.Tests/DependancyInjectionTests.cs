@@ -38,6 +38,21 @@ namespace FlashMapper.Tests
             CheckResultOrder(order, orderPosition, storeItem, brent, brentResult);
         }
 
+        [TestMethod]
+        public void AfterMapTest()
+        {
+            var configuration = new MappingConfiguration();
+            var registrationBuilder = new PersonBuilderWithAfterMap(configuration, 0);
+            registrationBuilder.RegisterMapping();
+            var frontModel = new PersonFrontModel();
+            var currentBuilder = new PersonBuilderWithAfterMap(configuration, 7);
+            var newPerson = currentBuilder.Build(frontModel);
+            Assert.AreEqual(7, newPerson.Height);
+            var existingPerson = new Person{Height = 6};
+            currentBuilder.MapData(frontModel, existingPerson);
+            Assert.AreEqual(7, existingPerson.Height);
+        }
+
         private static void CheckResultOrder(Order order, OrderPosition orderPosition, 
             StoreItem storeItem, Person person, SinglePositionOrder resultOrder)
         {

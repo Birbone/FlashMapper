@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using FlashMapper.Models;
 using FlashMapper.Services.ParsingUserInput;
 
 namespace FlashMapper.Internal.Implementations.ParsingUserInput
@@ -13,7 +14,7 @@ namespace FlashMapper.Internal.Implementations.ParsingUserInput
             this.specificExpressionBuilderFactories = specificExpressionBuilderFactories;
         }
 
-        public Expression Process(Expression inputExpression)
+        public Expression Process(Expression inputExpression, MappingPostProcessingContext context)
         {
             return new PropertyAssignPostProcessorVisitor(specificExpressionBuilderFactories).Visit(inputExpression);
         }

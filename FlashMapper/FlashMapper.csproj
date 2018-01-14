@@ -49,6 +49,9 @@
     <Compile Include="IFlashMapperGenericConverter.cs" />
     <Compile Include="IFlashMapperMappingCallbacksBuilder.cs" />
     <Compile Include="IFlashMapperMappingConfigurator.cs" />
+    <Compile Include="Internal\Implementations\ParsingUserInput\IsConstructionCheckPostProcessor.cs" />
+    <Compile Include="Internal\ProcessExpressionHelpers.cs" />
+    <Compile Include="Internal\ReplaceExpressionVisitor.cs" />
     <Compile Include="Internal\Utils\IFlashMapperDependencyResolver.cs" />
     <Compile Include="FlashMapperExtensions.cs" />
     <Compile Include="FlashMapperGenericConverter.cs" />
@@ -56,6 +59,7 @@
     <Compile Include="Models\DefaultFlashMapperSettings.cs" />
     <Compile Include="Models\FlashMapperMappingCallbacks.cs" />
     <Compile Include="Models\IFlashMapperMappingCallbacks.cs" />
+    <Compile Include="Models\MappingPostProcessingContext.cs" />
     <Compile Include="Services\GeneratingMappings\IExpressionCompiler.cs" />
     <Compile Include="Services\IFlashMapperService.cs" />
     <Compile Include="Internal\Implementations\GeneratingMappings\AutomaticPropertyValueExpressionResolver.cs" />
@@ -82,6 +86,7 @@
     <Compile Include="Services\ParsingUserInput\IIgnoreNodeChecker.cs" />
     <Compile Include="Services\ParsingUserInput\IIgnorePropertyAssignMapExpressionBuilderFactory.cs" />
     <Compile Include="Services\ParsingUserInput\IImplicitIgnoreNodeChecker.cs" />
+    <Compile Include="Services\ParsingUserInput\IIsConstructionCheckPostProcessor.cs" />
     <Compile Include="Services\ParsingUserInput\IMapExpressionBuilder.cs" />
     <Compile Include="Services\ParsingUserInput\IMemberInitUserInputParser.cs" />
     <Compile Include="IFlashMapperCustomServiceBuilder.cs" />

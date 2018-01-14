@@ -39,7 +39,8 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
             actions.Add(GetDelegateInvocationExpression(callbacks.AfterMapCallback, source, destination));
             actions.Add(destination);
             var methodBody = Expression.Block(new[] {destination}, actions);
-            var processedBody = mapExpressionPostProcessor.Process(methodBody);
+            var context = new MappingPostProcessingContext(true);
+            var processedBody = mapExpressionPostProcessor.Process(methodBody, context);
             var resultLambda = Expression.Lambda<Func<TSource, TDestination>>(processedBody, source);
             return resultLambda;
         }
@@ -55,7 +56,8 @@ namespace FlashMapper.Internal.Implementations.GeneratingMappings
             actions.AddRange(GetPropertyAssigns<TSource, TDestination>(source, destination, userInputParts.Bindings));
             actions.Add(GetDelegateInvocationExpression(callbacks.AfterMapCallback, source, destination));
             var methodBody = Expression.Block(actions);
-            var processedBody = mapExpressionPostProcessor.Process(methodBody);
+            var context = new MappingPostProcessingContext(false);
+            var processedBody = mapExpressionPostProcessor.Process(methodBody, context);
             var resultLambda = Expression.Lambda<Action<TSource, TDestination>>(processedBody, source, destination);
             return resultLambda;
         }

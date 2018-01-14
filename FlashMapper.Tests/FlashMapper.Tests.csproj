@@ -58,6 +58,8 @@
     <Compile Include="DependancyInjectionTests.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="IgnoreTests.cs" />
+    <Compile Include="IsConstructionFlagTests.cs" />
+    <Compile Include="MappingEventsTests.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderPosition.cs" />
     <Compile Include="Models\PersonViewModel.cs" />
@@ -77,6 +79,7 @@
     <Compile Include="Data\PeopleCollection.cs" />
     <Compile Include="Models\UserWeirdModel.cs" />
     <Compile Include="MultipleSourcesTests.cs" />
+    <Compile Include="PersonBuilderWithAfterMap.cs" />
     <Compile Include="PersonReportModelBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyNameResolvingTests.cs" />

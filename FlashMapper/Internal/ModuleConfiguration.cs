@@ -55,8 +55,10 @@ namespace FlashMapper.Internal
             result.RegisterService<IPropertyNameAbbrevationHandler>(r => new PropertyNameAbbrevationHandler());
             result.RegisterService<IMapExpressionPostProcessor>(r => new MapExpressionPostProcessor(new ISpecificMapExpressionPostProcessor[]
             {
-                r.GetService<IPropertyAssignPostProcessor>()
+                r.GetService<IPropertyAssignPostProcessor>(),
+                r.GetService<IIsConstructionCheckPostProcessor>()
             }.Union(r.GetServices<ICustomMapExpressionPostProcessor>())));
+            result.RegisterService<IIsConstructionCheckPostProcessor>(r => new IsConstructionCheckPostProcessor());
             result.RegisterService<IPropertyAssignPostProcessor>(r => new PropertyAssignPostProcessor(new ISpecificPropertyAssignMapExpressionBuilderFactory[]
             {
                 r.GetService<IIgnorePropertyAssignMapExpressionBuilderFactory>(),

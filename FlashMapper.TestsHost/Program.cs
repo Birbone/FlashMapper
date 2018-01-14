@@ -11,8 +11,8 @@ namespace FlashMapper.TestsHost
     {
         static void Main(string[] args)
         {
-            var tests = new DependancyInjectionTests();
-            tests.DependancyInjectionTest();
+            var tests = new MappingEventsTests();
+            tests.ChangeDestinationAfterMapTest();
         }
     }
 }
