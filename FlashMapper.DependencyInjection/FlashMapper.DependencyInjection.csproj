@@ -10,32 +10,31 @@
 Fix typo in project name
 Net standard</PackageReleaseNotes>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <PackageId>FlashMapper.DependencyInjection</PackageId>
+        <Product>FlashMapper.DependencyInjection</Product>
     </PropertyGroup>
 	<ItemGroup>
-    <None Include="FlashMapper.DependencyInjection.nuspec">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="IBuilder.tt">
+    <None Update="IBuilder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IBuilder.cs</LastGenOutput>
     </None>
-    <None Include="IFlashMapperBuilderConfigurator.tt">
+    <None Update="IFlashMapperBuilderConfigurator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>IFlashMapperBuilderConfigurator.cs</LastGenOutput>
     </None>
-    <None Include="MappingExpressionStorage.tt">
+    <None Update="MappingExpressionStorage.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>MappingExpressionStorage.cs</LastGenOutput>
     </None>
-    <None Include="FlashMapperBuilder.tt">
+    <None Update="FlashMapperBuilder.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FlashMapperBuilder.cs</LastGenOutput>
     </None>
-    <None Include="FlashMapperBuilderConfigurator.tt">
+    <None Update="FlashMapperBuilderConfigurator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FlashMapperBuilderConfigurator.cs</LastGenOutput>
     </None>
-    <None Include="DeferredFlashMapperMappingConfigurator.tt">
+    <None Update="DeferredFlashMapperMappingConfigurator.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>DeferredFlashMapperMappingConfigurator.cs</LastGenOutput>
     </None>
@@ -43,5 +42,40 @@ Net standard</PackageReleaseNotes>
 	<ItemGroup>
 	  <ProjectReference Include="..\FlashMapper.MultiSource\FlashMapper.MultiSource.csproj" />
 	  <ProjectReference Include="..\FlashMapper\FlashMapper.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Update="DeferredFlashMapperMappingConfigurator.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>DeferredFlashMapperMappingConfigurator.tt</DependentUpon>
+	  </Compile>
+	  <Compile Update="FlashMapperBuilder.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>FlashMapperBuilder.tt</DependentUpon>
+	  </Compile>
+	  <Compile Update="FlashMapperBuilderConfigurator.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>FlashMapperBuilderConfigurator.tt</DependentUpon>
+	  </Compile>
+	  <Compile Update="IBuilder.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>IBuilder.tt</DependentUpon>
+	  </Compile>
+	  <Compile Update="IFlashMapperBuilderConfigurator.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>IFlashMapperBuilderConfigurator.tt</DependentUpon>
+	  </Compile>
+	  <Compile Update="MappingExpressionStorage.cs">
+	    <DesignTime>True</DesignTime>
+	    <AutoGen>True</AutoGen>
+	    <DependentUpon>MappingExpressionStorage.tt</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 </Project>

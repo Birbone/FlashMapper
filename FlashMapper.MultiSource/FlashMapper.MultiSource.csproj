@@ -57,6 +57,11 @@ Net Standard</PackageReleaseNotes>
         <AutoGen>True</AutoGen>
         <DependentUpon>FlashMapperGenericConverter.tt</DependentUpon>
       </Compile>
+      <Compile Update="FlashMapperMappingConfigurator.cs">
+        <DesignTime>True</DesignTime>
+        <AutoGen>True</AutoGen>
+        <DependentUpon>FlashMapperMappingConfigurator.tt</DependentUpon>
+      </Compile>
       <Compile Update="FlashMapperMultiSourceExtensions.cs">
         <DesignTime>True</DesignTime>
         <AutoGen>True</AutoGen>
