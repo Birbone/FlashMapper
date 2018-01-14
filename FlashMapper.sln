@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashMapper.Tests", "FlashM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashMapper.MultiSource", "FlashMapper.MultiSource\FlashMapper.MultiSource.csproj", "{D8D736D0-2925-4631-BBD3-4D8FEEF71328}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashMapper.DependancyInjection", "FlashMapper.DependancyInjection\FlashMapper.DependancyInjection.csproj", "{6025C55B-79E9-47E4-BE4F-4F02B6CF8852}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashMapper.DependencyInjection", "FlashMapper.DependencyInjection\FlashMapper.DependencyInjection.csproj", "{6025C55B-79E9-47E4-BE4F-4F02B6CF8852}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashMapper.PerformanceTests", "FlashMapper.PerformanceTests\FlashMapper.PerformanceTests.csproj", "{9E050F93-D693-4E83-8077-AF471C191393}"
 EndProject

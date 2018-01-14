@@ -1,4 +1,4 @@
-using FlashMapper.DependancyInjection;
+using FlashMapper.DependencyInjection;
 using FlashMapper.PerformanceTests.Models;
 
 namespace FlashMapper.PerformanceTests.Services.IdenticalModelsTest

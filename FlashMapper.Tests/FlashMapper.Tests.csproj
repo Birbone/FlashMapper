@@ -55,7 +55,7 @@
     <Compile Include="Data\OrdersCollection.cs" />
     <Compile Include="Data\StoreItemsCollection.cs" />
     <Compile Include="Data\UsersCollection.cs" />
-    <Compile Include="DependancyInjectionTests.cs" />
+    <Compile Include="DependencyInjectionTests.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="IgnoreTests.cs" />
     <Compile Include="IsConstructionFlagTests.cs" />
@@ -88,9 +88,9 @@
     <Compile Include="TestHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FlashMapper.DependancyInjection\FlashMapper.DependancyInjection.csproj">
+    <ProjectReference Include="..\FlashMapper.DependencyInjection\FlashMapper.DependencyInjection.csproj">
       <Project>{6025c55b-79e9-47e4-be4f-4f02b6cf8852}</Project>
-      <Name>FlashMapper.DependancyInjection</Name>
+      <Name>FlashMapper.DependencyInjection</Name>
     </ProjectReference>
     <ProjectReference Include="..\FlashMapper.MultiSource\FlashMapper.MultiSource.csproj">
       <Project>{d8d736d0-2925-4631-bbd3-4d8feef71328}</Project>

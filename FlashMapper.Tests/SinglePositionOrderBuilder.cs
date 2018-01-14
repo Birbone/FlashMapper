@@ -1,6 +1,6 @@
 using System;
 using System.Linq;
-using FlashMapper.DependancyInjection;
+using FlashMapper.DependencyInjection;
 using FlashMapper.Tests.Data;
 using FlashMapper.Tests.Models;
 

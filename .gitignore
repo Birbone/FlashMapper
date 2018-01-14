@@ -6,11 +6,11 @@
 /FlashMapper/nuget
 /FlashMapper/FlashMapper.csproj.user
 /FlashMapper/nuget.exe
-/FlashMapper.DependancyInjection/bin
-/FlashMapper.DependancyInjection/obj
-/FlashMapper.DependancyInjection/nuget
-/FlashMapper.DependancyInjection/FlashMapper.DependancyInjection.csproj.user
-/FlashMapper.DependancyInjection/nuget.exe
+/FlashMapper.DependencyInjection/bin
+/FlashMapper.DependencyInjection/obj
+/FlashMapper.DependencyInjection/nuget
+/FlashMapper.DependencyInjection/FlashMapper.DependencyInjection.csproj.user
+/FlashMapper.DependencyInjection/nuget.exe
 /FlashMapper.MultiSource/obj
 /FlashMapper.MultiSource/bin
 /FlashMapper.MultiSource/nuget

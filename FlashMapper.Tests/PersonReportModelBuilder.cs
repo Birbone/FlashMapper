@@ -1,4 +1,4 @@
-using FlashMapper.DependancyInjection;
+using FlashMapper.DependencyInjection;
 using FlashMapper.Tests.Models;
 
 namespace FlashMapper.Tests
