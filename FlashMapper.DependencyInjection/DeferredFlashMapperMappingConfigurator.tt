@@ -19,11 +19,7 @@
 //------------------------------------------------------------------------------
 
 using System;
-using System.Linq.Expressions;
-using FlashMapper.Internal.Utils;
-using FlashMapper.Models;
 using FlashMapper.MultiSource;
-using FlashMapper.Services;
 
 namespace FlashMapper.DependencyInjection
 {

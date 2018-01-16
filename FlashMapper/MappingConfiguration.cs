@@ -36,12 +36,12 @@ namespace FlashMapper
             dependantConfigurations = new List<IMappingConfiguration>();
         }
         
-        public void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression)
+        public IMappingConfiguration CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingExpression, dependencyResolver, new FlashMapperMappingCallbacks<TSource, TDestination>(null, null));
+            return CreateMapping(mappingExpression, dependencyResolver, new FlashMapperMappingCallbacks<TSource, TDestination>(null, null));
         }
 
-        public void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, 
+        public IMappingConfiguration CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, 
             Func<IFlashMapperMappingConfigurator<TSource, TDestination>, IFlashMapperMappingConfigurator<TSource, TDestination>> settings)
         {
             var configurator = new FlashMapperMappingConfigurator<TSource, TDestination>(dependencyResolver);
@@ -52,7 +52,7 @@ namespace FlashMapper
             var mappingSettings = resolver.GetService<IFlashMapperSettingsExtender>()
                 .Extend(defaultFlashMapperSettings, customSettings);
             configurator.RegisterService(r => mappingSettings);
-            CreateMapping(mappingExpression, resolver, configurator.GetMappingCallbacks());
+            return CreateMapping(mappingExpression, resolver, configurator.GetMappingCallbacks());
         }
         
         [Obsolete]
@@ -82,11 +82,12 @@ namespace FlashMapper
             return mappingSettings;
         }
         
-        private void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, IFlashMapperDependencyResolver resolver, IFlashMapperMappingCallbacks<TSource, TDestination> callbacks)
+        private IMappingConfiguration CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, IFlashMapperDependencyResolver resolver, IFlashMapperMappingCallbacks<TSource, TDestination> callbacks)
         {
             var mappingGenerator = resolver.GetService<IMappingGenerator>();
             var mapping = mappingGenerator.GenerateCompleteMapping(mappingExpression, callbacks);
             mappingsStorage.SetMapping(mapping);
+            return this;
         }
 
         public void MapData<TSource, TDestination>(TSource source, TDestination destination)

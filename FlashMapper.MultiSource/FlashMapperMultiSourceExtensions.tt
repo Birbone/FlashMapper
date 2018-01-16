@@ -38,21 +38,21 @@ namespace FlashMapper
 		var sourceMethodParametersString = string.Join(", ", Enumerable.Range(1, i + 1)
 			.Select(n => $"T{sourceTypePrefix}{n} {sourceVariablePrefix}{n}"));
 #>
-        public static void CreateMapping<<#= sourcesTypesString#>, TDestination>(
+        public static IMappingConfiguration CreateMapping<<#= sourcesTypesString#>, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<<#= sourcesTypesString#>, TDestination>> mappingExpression)
         {
-            CreateMapping(mappingConfiguration, mappingExpression, s => s);
+            return CreateMapping(mappingConfiguration, mappingExpression, s => s);
         }
 
-        public static void CreateMapping<<#= sourcesTypesString#>, TDestination>(
+        public static IMappingConfiguration CreateMapping<<#= sourcesTypesString#>, TDestination>(
             this IMappingConfiguration mappingConfiguration, 
             Expression<Func<<#= sourcesTypesString#>, TDestination>> mappingExpression,
             Func<IFlashMapperMappingConfigurator<<#= sourcesTypesString#>, TDestination>, IFlashMapperMappingConfigurator<<#= sourcesTypesString#>, TDestination>> settings)
         {
 		    var converter = new MultiSourceMappingExpressionConverter<<#= sourcesTypesString#>, TDestination>(new InternalMultiSourceMappingExpressionConverter());
             var singleSourceExpression = converter.Convert(mappingExpression);
-            mappingConfiguration.CreateMapping(singleSourceExpression, s =>
+            return mappingConfiguration.CreateMapping(singleSourceExpression, s =>
             {
                 settings(new FlashMapperMappingConfigurator<<#= sourcesTypesString#>, TDestination>(s))
                     .RegisterService<IAutomaticPropertyValueExpressionResolver>(r =>

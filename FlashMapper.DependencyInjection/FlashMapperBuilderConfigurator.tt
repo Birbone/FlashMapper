@@ -45,7 +45,7 @@ namespace FlashMapper.DependencyInjection
 #>
 		public IFlashMapperBuilderConfigurator<<#= sourcesTypesWithNewParameterString #>, TDestination> ResolveExtraParameter<<#= newParameterSourceTypeName #>>(Expression<Func<<#= sourcesTypesWithNewParameterString #>>> resolveParameterMethod)
 		{
-		    Action<IMappingConfiguration, Expression<Func<<#= sourcesTypesString #>, TBuilder, TDestination>>, Func<IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>, IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
+		    Func<IMappingConfiguration, Expression<Func<<#= sourcesTypesString #>, TBuilder, TDestination>>, Func<IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>, IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>>, IMappingConfiguration> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
             Func<IMappingConfiguration, <#= sourcesTypesWithNewParameterString #>, TBuilder, TDestination> convertMethod = FlashMapperMultiSourceExtensions.Convert<<#= sourcesTypesWithNewParameterString #>, TBuilder, TDestination>;
 			Action<IMappingConfiguration, <#= sourcesTypesWithNewParameterString #>, TBuilder, TDestination> mapDataMethod = FlashMapperMultiSourceExtensions.MapData;
 			var serviceRegistrationHelper = new ServiceRegistrationHelper<IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>>();
@@ -59,7 +59,7 @@ namespace FlashMapper.DependencyInjection
 
         public IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TDestination> CreateMapping(Expression<Func<<#= sourcesTypesString #>, TDestination>> mappingExpression)
         {
-			Action<IMappingConfiguration, Expression<Func<<#= sourcesTypesString #>, TBuilder, TDestination>>, Func<IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>, IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>>> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
+			Func<IMappingConfiguration, Expression<Func<<#= sourcesTypesString #>, TBuilder, TDestination>>, Func<IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>, IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>>, IMappingConfiguration> createMappingMethod = FlashMapperMultiSourceExtensions.CreateMapping;
             var settings = new DeferredFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TDestination, TBuilder>(builder);
             Func<IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>, IFlashMapperMappingConfigurator<<#= sourcesTypesString #>, TBuilder, TDestination>> internalSettingsInitializer = settings.Initialize;
 			var step = new ResultMappingConfigStep(mappingExpression, createMappingMethod.Method, internalSettingsInitializer);

@@ -1,4 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using FlashMapper.Models;
+using FlashMapper.MultiSource;
+using FlashMapper.Services.GeneratingMappings;
+using FlashMapper.Services.MatchingProperties;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FlashMapper.Tests.Data;
 using FlashMapper.Tests.Models;
 

@@ -14,7 +14,7 @@ namespace FlashMapper
         /// <typeparam name="TSource">Original model</typeparam>
         /// <typeparam name="TDestination">Result model</typeparam>
         /// <param name="mappingExpression">Expression that describes conversion from source model to destination</param>
-        void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression);
+        IMappingConfiguration CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression);
         /// <summary>
         /// Configures and stores mapping for later use
         /// </summary>
@@ -22,7 +22,7 @@ namespace FlashMapper
         /// <typeparam name="TDestination">Result model</typeparam>
         /// <param name="mappingExpression">Expression that describes conversion from source model to destination</param>
         /// <param name="settings">Settings configurator</param>
-        void CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, 
+        IMappingConfiguration CreateMapping<TSource, TDestination>(Expression<Func<TSource, TDestination>> mappingExpression, 
             Func<IFlashMapperMappingConfigurator<TSource, TDestination>, IFlashMapperMappingConfigurator<TSource, TDestination>> settings);
         /// <summary>
         /// Configures and stores mapping for later use
