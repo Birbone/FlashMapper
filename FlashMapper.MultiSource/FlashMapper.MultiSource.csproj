@@ -3,13 +3,12 @@
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;net40</TargetFrameworks>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <Version>1.0.3</Version>
+        <Version>1.0.4</Version>
         <Authors>Ilya Tiunov</Authors>
         <Company />
         <Description>Extension for FlashMapper that allows to map data from multiple sources.</Description>
         <PackageTags>convert map data flashmapper multisource</PackageTags>
-        <PackageReleaseNotes>Map events
-Net Standard</PackageReleaseNotes>
+        <PackageReleaseNotes>Fluent Mapping Configuration</PackageReleaseNotes>
         <PackageProjectUrl>https://github.com/Birbone/FlashMapper</PackageProjectUrl>
         <RepositoryUrl>https://github.com/Birbone/FlashMapper</RepositoryUrl>
         <RepositoryType>git</RepositoryType>

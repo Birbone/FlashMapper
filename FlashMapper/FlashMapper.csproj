@@ -3,11 +3,11 @@
     <PropertyGroup>
         <TargetFrameworks>netstandard2.0;net4</TargetFrameworks>
 		<Title>FlashMapper</Title>
-		<Version>1.0.3</Version>
+		<Version>1.0.4</Version>
 		<Authors>Ilya Tiunov</Authors>
 		<Company />
 		<Description>.net-library that allows you to map properties of two classes and then use result mapping to convert from one to another.</Description>
-		<PackageReleaseNotes>Map events</PackageReleaseNotes>
+		<PackageReleaseNotes>Fluent Mapping Configuration</PackageReleaseNotes>
 		<PackageTags>convert map data mapper flashmapper</PackageTags>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<PackageProjectUrl>https://github.com/Birbone/FlashMapper</PackageProjectUrl>
